@@ -26,9 +26,6 @@ namespace WorkSearch {
 			//
 			//TODO: добавьте код конструктора
 			//
-			Vacancies &vacancies = Vacancies();
-			string filePath = "";
-			vacancies.readFromJson(filePath);
 		}
 
 	protected:

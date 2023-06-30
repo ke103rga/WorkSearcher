@@ -9,6 +9,7 @@ class Vacancies {
 	unordered_map<int, Vacancy*> vacancies;
 	vector<Change*> changes;
 public:
+	Vacancies();
 	bool savedChanges;
 	Vacancy* findById(int id);//Поиск по идентификатору
 	Vacancy* findByParams(string vacancyName = "*", int salary = 0, string scedule = "*");//Поиск по одному или нескольким параметрам
@@ -19,3 +20,6 @@ public:
 	bool deleteVacancy(int id);//Удаление вакансии
 	bool addVacancy(Vacancy* newVacancy);//Добавление вакансии
 };
+
+#pragma once
+extern Vacancies vacancies;

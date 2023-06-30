@@ -38,7 +38,7 @@
     <ClInclude Include="Vacancy.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Vacansies.h">
+    <ClInclude Include="Vacancies.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="MainWindow.h">

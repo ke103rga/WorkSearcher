@@ -138,7 +138,7 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Vacancy.h" />
-    <ClInclude Include="Vacansies.h" />
+    <ClInclude Include="Vacancies.h" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

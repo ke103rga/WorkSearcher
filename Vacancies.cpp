@@ -1,24 +1,23 @@
 #include <unordered_map>
 #include "Vacancy.h"
+#include "Vacancies.h"
 #include "Change.h"
+
 using namespace std;
 
-class Vacancies {
-	unordered_map<int, Vacancy*> vacancies;
-	vector<Change*> changes;
-public:
-	Vacancies() {
-		vacancies = unordered_map<int, Vacancy*>();
-		changes = vector<Change*>();
-	};
-
-	bool savedChanges;
-	Vacancy* findById(int id);//Поиск по идентификатору
-	Vacancy* findByParams(string vacancyName = "*", int salary = 0, string scedule = "*");//Поиск по одному или нескольким параметрам
-
-	bool readFromJson(string filePath);//Чтение данных из файла
-	bool saveChanges(string filePath);//Сохранение изменений
-
-	bool deleteVacancy(int id);//Удаление вакансии
-	bool addVacancy(Vacancy* newVacancy);//Добавление вакансии
+#pragma once
+Vacancies::Vacancies() {
+	vacancies = unordered_map<int, Vacancy*>();
+	changes = vector<Change*>();
 };
+#pragma once
+bool Vacancies::readFromJson(string filePath) { return true; }//Чтение данных из файла
+#pragma once
+bool Vacancies::saveChanges(string filePath) { return true; }//Сохранение изменений
+#pragma once
+bool Vacancies::deleteVacancy(int id) { return true; }//Удаление вакансии
+#pragma once
+bool Vacancies::addVacancy(Vacancy* newVacancy) { return true; }//Добавление вакансии
+
+
+Vacancies vacancies = Vacancies();

@@ -1,4 +1,4 @@
-#include "Vacansies.h"
+#include "Vacancies.h"
 
 #pragma once
 
@@ -535,7 +535,6 @@ namespace WorkSearch {
 		}
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	int idToDelete = Convert::ToInt32(this->vacIdTextBox->SelectedText);
-	vacancies.deleteVacancy(idToDelete);
 }
 };
 }
