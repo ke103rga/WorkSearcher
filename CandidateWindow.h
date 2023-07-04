@@ -1,3 +1,10 @@
+#include <msclr\marshal_cppstd.h>
+#include <unordered_set>
+#include <vector>
+#include <format>
+#include <iostream>
+#include "Vacancies.h"
+
 #pragma once
 
 namespace WorkSearch {
@@ -8,6 +15,7 @@ namespace WorkSearch {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace std;
 
 	/// <summary>
 	/// Сводка для CandidateWindow
@@ -18,9 +26,8 @@ namespace WorkSearch {
 		CandidateWindow(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+			for (int i = 0; i < sceduleCheckedListBox->Items->Count; i++)
+				sceduleCheckedListBox->SetItemChecked(i, true);
 		}
 
 	protected:
@@ -37,7 +44,8 @@ namespace WorkSearch {
 	private: System::Windows::Forms::PictureBox^ LogoPictureBox;
 	private: System::Windows::Forms::LinkLabel^ helpLinkLabel;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ vacancuNameTextBox;
+	private: System::Windows::Forms::TextBox^ vacancyNameTextBox;
+
 	private: System::Windows::Forms::Button^ searchButton;
 	private: System::Windows::Forms::Panel^ panel1;
 	private: System::Windows::Forms::Label^ label2;
@@ -71,6 +79,9 @@ namespace WorkSearch {
 
 
 
+
+
+
 	protected:
 
 	private:
@@ -90,7 +101,7 @@ namespace WorkSearch {
 			this->LogoPictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->helpLinkLabel = (gcnew System::Windows::Forms::LinkLabel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->vacancuNameTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->vacancyNameTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -139,6 +150,7 @@ namespace WorkSearch {
 			this->helpLinkLabel->TabIndex = 4;
 			this->helpLinkLabel->TabStop = true;
 			this->helpLinkLabel->Text = L"Помощь";
+			this->helpLinkLabel->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &CandidateWindow::helpLinkLabel_LinkClicked);
 			// 
 			// label1
 			// 
@@ -151,23 +163,24 @@ namespace WorkSearch {
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"Укажите название вакансии";
 			// 
-			// vacancuNameTextBox
+			// vacancyNameTextBox
 			// 
-			this->vacancuNameTextBox->Location = System::Drawing::Point(146, 55);
-			this->vacancuNameTextBox->Name = L"vacancuNameTextBox";
-			this->vacancuNameTextBox->Size = System::Drawing::Size(280, 40);
-			this->vacancuNameTextBox->TabIndex = 6;
+			this->vacancyNameTextBox->Location = System::Drawing::Point(146, 55);
+			this->vacancyNameTextBox->Name = L"vacancyNameTextBox";
+			this->vacancyNameTextBox->Size = System::Drawing::Size(280, 20);
+			this->vacancyNameTextBox->TabIndex = 6;
 			// 
 			// searchButton
 			// 
 			this->searchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->searchButton->Location = System::Drawing::Point(444, 55);
+			this->searchButton->Location = System::Drawing::Point(441, 44);
 			this->searchButton->Name = L"searchButton";
 			this->searchButton->Size = System::Drawing::Size(102, 40);
 			this->searchButton->TabIndex = 7;
 			this->searchButton->Text = L"Найти";
 			this->searchButton->UseVisualStyleBackColor = true;
+			this->searchButton->Click += gcnew System::EventHandler(this, &CandidateWindow::searchButton_Click);
 			// 
 			// panel1
 			// 
@@ -240,7 +253,6 @@ namespace WorkSearch {
 			this->label4->Size = System::Drawing::Size(27, 16);
 			this->label4->TabIndex = 2;
 			this->label4->Text = L"От:";
-			this->label4->Click += gcnew System::EventHandler(this, &CandidateWindow::label4_Click);
 			// 
 			// label3
 			// 
@@ -331,11 +343,11 @@ namespace WorkSearch {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1075, 484);
+			this->ClientSize = System::Drawing::Size(1069, 484);
 			this->Controls->Add(this->vacanciesGridView);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->searchButton);
-			this->Controls->Add(this->vacancuNameTextBox);
+			this->Controls->Add(this->vacancyNameTextBox);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->helpLinkLabel);
 			this->Controls->Add(this->LogoPictureBox);
@@ -353,7 +365,62 @@ namespace WorkSearch {
 			this->PerformLayout();
 
 		}
-private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
+
+
+private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	String^ helpMessage = "Введите название интересующей вас вакансии и нажмите кнопку \"Найти\".\nПри необходимости укажите дополнительные параметры поиска\nи вновь нажмите кнопку \"Найти\"";
+	MessageBox::MessageBox::Show(helpMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	std::string _vacancyName = msclr::interop::marshal_as<std::string>(vacancyNameTextBox->Text);
+	if (_vacancyName == "") {
+		String^ errorMessage = "Укажите название вакансии";
+		MessageBox::MessageBox::Show(errorMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	String^ errorMessage =  vacancyNameTextBox->Text;
+	int minSalary = 0;
+	int maxSalary = 2 ^ 31 - 1;
+
+	if (minSalaryTextBox->Text != "") {
+		try { minSalary = Convert::ToInt32(minSalaryTextBox->Text); }
+		catch (const std::exception& ex) {
+			String^ errorMessage = "Границы заработной платы должны быть целыми числами";
+		    MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
+		}
+	}
+
+	if (maxSalaryTextBox->Text != "") {
+		try { 
+			maxSalary = Convert::ToInt32(minSalaryTextBox->Text); 
+			if (maxSalary < minSalary) {
+				String^ errorMessage = "Границы зароботной платы должны быть целыми числами";
+				MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+		}
+		catch (const std::exception& ex) {
+			String^ errorMessage = "Границы зароботной платы должны быть целыми числами";
+			MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+
+	if (sceduleCheckedListBox->CheckedItems->Count == 0) {
+		String^ errorMessage = "Выберете хотя бы один интересующий вас график работы";
+		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+
+	std::unordered_set<std::string> appropriateScedules; 
+	for (int i = 0; i != sceduleCheckedListBox->CheckedItems->Count; i++) {
+		appropriateScedules.insert(msclr::interop::marshal_as<std::string>(sceduleCheckedListBox->CheckedItems[i]->ToString()));
+	}
+    //std::vector<int> vacIds = vacancies.findByParams(_vacancyName, minSalary, maxSalary, appropriateScedules);
+	std::vector<int> vacIds = vector<int>();
+	vacIds = { 1, 2 };
+
+	for (int i = 0; i != vacIds.size(); i++) {
+		//Vacancy* vac = vacancies.findById(vacIds[i]);
+
+		auto arr = gcnew array<System::Object^>(10);
+	}
 }
 };
 }

@@ -1,19 +1,13 @@
 #include <iostream>
-#include "rapidjson/document.h"
-#include "rapidjson/filereadstream.h"
-#include "rapidjson/filewritestream.h"
-#include <fstream>
-#include "rapidjson/writer.h"
-
 #include "EmployerWindow.h"
 #include "MainWindow.h"
 #include "Vacancies.h"
 
 using namespace std;
-using namespace rapidjson;
 using namespace WorkSearch;
  
 
+[STAThreadAttribute()]
 int main()
 {
     // Running the main window
@@ -22,9 +16,9 @@ int main()
     MainWindow form;
     Application::Run(% form);
 
-    // Collecting the databes
+    // Collecting the database
     string filePath = "";
-    vacancies.readFromJson(filePath);
+    //vacancies.readFromJson(filePath);
 
     char c;
     cin >> c;

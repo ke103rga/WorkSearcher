@@ -1,4 +1,8 @@
+#include <regex>
 #include "Vacancies.h"
+#include <msclr\marshal_cppstd.h>
+
+using namespace System::Collections::Generic;
 
 #pragma once
 
@@ -17,22 +21,30 @@ namespace WorkSearch {
 	public ref class EmployerWindow : public System::Windows::Forms::Form
 	{
 	public:
+		String^ logoFile;
+		List<RichTextBox^> inputFields;
 
 		EmployerWindow(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
-			
+
 			ToolTip^ uniToolTip = gcnew ToolTip;
 			uniToolTip->AutoPopDelay = 50000;
 			uniToolTip->InitialDelay = 1;
 			uniToolTip->ReshowDelay = 5000;
 			uniToolTip->ShowAlways = true;
-			uniToolTip->SetToolTip(this->reqTipLabel, "Введите список необхадимых качеств через запятую");
-			uniToolTip->SetToolTip(this->trialPerTipLabel, "Введите количество дней, котоое составляет длительность испытательного срока.\nЕсли срок для данной ваканси не предполагается - введиет 0.");
+			uniToolTip->SetToolTip(this->reqTipLabel, "Введите список необходимых качеств через запятую");
+			uniToolTip->SetToolTip(this->trialPerTipLabel, "Введите количество дней, которое составляет длительность испытательного срока.\nЕсли срок для данной ваканси не предполагается - введиет 0.");
 			uniToolTip->SetToolTip(this->SceduleTipLabel, "Укажите один из вариантов:\n*   5/2\n*   2/2\n*   Посуточный\n*   Почасовой");
+			
+			inputFields.Add(companyTextBox);
+			inputFields.Add(vacancyTextBox);
+			inputFields.Add(salaryTextBox);
+			inputFields.Add(sceduleTextBox);
+			inputFields.Add(trialPerTextBox);
+			inputFields.Add(emailTextBox);
+			inputFields.Add(phoneNumberTextBox);
+			inputFields.Add(reqTextBox);
 		}
 
 	protected:
@@ -162,6 +174,7 @@ namespace WorkSearch {
 			this->helpLinkLabel->TabIndex = 5;
 			this->helpLinkLabel->TabStop = true;
 			this->helpLinkLabel->Text = L"Помощь";
+			this->helpLinkLabel->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &EmployerWindow::helpLinkLabel_LinkClicked);
 			// 
 			// tableLayoutPanel1
 			// 
@@ -236,7 +249,7 @@ namespace WorkSearch {
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(123, 46);
 			this->label9->TabIndex = 10;
-			this->label9->Text = L"Требования к канидидатуре";
+			this->label9->Text = L"Требования к кандидатуре";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label1
@@ -417,6 +430,7 @@ namespace WorkSearch {
 			this->selectLogoButon->TabIndex = 17;
 			this->selectLogoButon->Text = L"Выбрать файл";
 			this->selectLogoButon->UseVisualStyleBackColor = true;
+			this->selectLogoButon->Click += gcnew System::EventHandler(this, &EmployerWindow::selectLogoButon_Click);
 			// 
 			// reqTipLabel
 			// 
@@ -477,8 +491,9 @@ namespace WorkSearch {
 			this->addVacancyButton->Name = L"addVacancyButton";
 			this->addVacancyButton->Size = System::Drawing::Size(223, 36);
 			this->addVacancyButton->TabIndex = 8;
-			this->addVacancyButton->Text = L"Добавить ваканисю";
+			this->addVacancyButton->Text = L"Добавить вакансию";
 			this->addVacancyButton->UseVisualStyleBackColor = true;
+			this->addVacancyButton->Click += gcnew System::EventHandler(this, &EmployerWindow::addVacancyButton_Click);
 			// 
 			// label14
 			// 
@@ -507,7 +522,7 @@ namespace WorkSearch {
 			this->deleteVacancyButton->Name = L"deleteVacancyButton";
 			this->deleteVacancyButton->Size = System::Drawing::Size(202, 36);
 			this->deleteVacancyButton->TabIndex = 22;
-			this->deleteVacancyButton->Text = L"Удалить ваканисю";
+			this->deleteVacancyButton->Text = L"Удалить вакансию";
 			this->deleteVacancyButton->UseVisualStyleBackColor = true;
 			this->deleteVacancyButton->Click += gcnew System::EventHandler(this, &EmployerWindow::deleteVacancyButton_Click);
 			// 
@@ -535,6 +550,111 @@ namespace WorkSearch {
 		}
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	int idToDelete = Convert::ToInt32(this->vacIdTextBox->SelectedText);
+	//vacancies.deleteVacancy(idToDelete);
+}
+
+private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	String^ helpMessage = "Для удаления вакансии введите ее идентификатор.\"\nДля создания новой необходимо заполнить все указанные поля\nЗа дополнительной информацией воспользуйтесь подсказками напротив соответсвующий полей.";
+	MessageBox::MessageBox::Show(helpMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+	   bool anyEmptyFields() {
+		   for (int i = 0; i != inputFields.Count; i++) {
+			   if (inputFields[i]->Text == "") {
+				   return true;
+			   }
+		   }
+		   return false;
+	   }
+
+	   bool isInt(const std::string s)
+	   {
+		   std::string::const_iterator it = s.begin();
+		   while (it != s.end() && std::isdigit(*it)) ++it;
+		   return !s.empty() && it == s.end();
+	   }
+
+	   bool isEmailValid(const std::string& email)
+	   {
+		   const std::regex pattern
+		   ("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
+		   return std::regex_match(email, pattern);
+	   }
+
+	   bool isPhoneValid(const std::string& phoneNumber)
+	   {
+		   const std::regex pattern
+		   ("/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/");
+		   return std::regex_match(phoneNumber, pattern);
+	   }
+
+	   bool isReqListValid(const std::string& reqs) {
+		   return true;
+	   }
+			  
+
+       private: System::Void selectLogoButon_Click(System::Object^ sender, System::EventArgs^ e) {
+		   // TODO 
+		   SaveFileDialog^ sfd = gcnew SaveFileDialog();
+		   sfd->ShowDialog();
+		   logoFile = sfd->FileName;
+       }
+
+	   /*private: bool createVacancy(Vacancy* newVacancy) {
+		   string company = msclr::interop::marshal_as<std::string>(companyTextBox->Text);
+		   string vacancy = msclr::interop::marshal_as<std::string>(vacancyTextBox->Text);
+		   string salary = msclr::interop::marshal_as<std::string>(salaryTextBox->Text);
+		   string scedule = msclr::interop::marshal_as<std::string>(sceduleTextBox->Text);
+		   string trialPer = msclr::interop::marshal_as<std::string>(trialPerTextBox->Text);
+		   string email = msclr::interop::marshal_as<std::string>(emailTextBox->Text);
+		   string phoneNumber = msclr::interop::marshal_as<std::string>(phoneNumberTextBox->Text);
+		   string candidateReq = msclr::interop::marshal_as<std::string>(reqTextBox->Text);
+
+
+		   if (!isInt(salary)) {
+			   String^ errorMessage = "Величина заработной платы должна составлять целое число";
+			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   return false;
+		   }
+
+		   if (!isInt(trialPer)) {
+			   String^ errorMessage = "Длительность испытательного срока должна составлять целое число дней или 0, в случае его отсутствия";
+			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   return false;
+		   }
+
+		   if (!(scedule == "5/2" || scedule == "2/2" || scedule == "посуточный" || scedule == "почасовой")) {
+			   String^ errorMessage = "Рабочий график должен соответствовать одному из вариантов:\n*   5/2\n*   2/2\n*   Посуточный\n*   Почасовой";
+			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   return false;
+		   }
+
+		   if (!(isEmailValid(email))) {
+			   String^ errorMessage = "Проверьте введенный адрес электронной почты.";
+			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   return false;
+		   }
+
+		   if (!(isPhoneValid(phoneNumber))) {
+			   String^ errorMessage = "Проверьте введенный номер телефона.";
+			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   return false;
+		   }
+		   return true;
+	   }*/
+
+private: System::Void addVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (anyEmptyFields()) {
+		String^ errorMessage = "Заполните все поля!";
+		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
+		return; 
+	}
+	/*Vacancy* newVacancy = &Vacancy();
+	if (createVacancy(newVacancy)) {
+		vacancies.addVacancy(newVacancy);
+		String^ Message = "Вакансия была успешно создана.";
+		MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}*/
 }
 };
 }
