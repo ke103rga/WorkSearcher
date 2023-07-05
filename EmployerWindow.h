@@ -1,5 +1,6 @@
 #include <regex>
 #include "Vacancies.h"
+#include "InputDataValidator.h"
 #include <msclr\marshal_cppstd.h>
 
 using namespace System::Collections::Generic;
@@ -549,8 +550,16 @@ namespace WorkSearch {
 
 		}
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	int idToDelete = Convert::ToInt32(this->vacIdTextBox->SelectedText);
-	//vacancies.deleteVacancy(idToDelete);
+	if (!InputDataValidator::isInt(vacIdTextBox->Text)) {
+		String^ helpMessage = "Идентификатор вакансии - целое положительное число";
+		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		vacIdTextBox->Text = "Введите целочисленный идентификатор вакансии";
+		return;
+	}
+	int idToDelete = Convert::ToInt32(this->vacIdTextBox->Text);
+	vacancies.deleteVacancy(idToDelete);
+	String^ successMessage = "Вакансия удалена";
+	MessageBox::MessageBox::Show(successMessage, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 
 private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
@@ -564,34 +573,8 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 				   return true;
 			   }
 		   }
-		   return false;
+		   return logoFile == "";
 	   }
-
-	   bool isInt(const std::string s)
-	   {
-		   std::string::const_iterator it = s.begin();
-		   while (it != s.end() && std::isdigit(*it)) ++it;
-		   return !s.empty() && it == s.end();
-	   }
-
-	   bool isEmailValid(const std::string& email)
-	   {
-		   const std::regex pattern
-		   ("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
-		   return std::regex_match(email, pattern);
-	   }
-
-	   bool isPhoneValid(const std::string& phoneNumber)
-	   {
-		   const std::regex pattern
-		   ("/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/");
-		   return std::regex_match(phoneNumber, pattern);
-	   }
-
-	   bool isReqListValid(const std::string& reqs) {
-		   return true;
-	   }
-			  
 
        private: System::Void selectLogoButon_Click(System::Object^ sender, System::EventArgs^ e) {
 		   // TODO 
@@ -600,7 +583,7 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 		   logoFile = sfd->FileName;
        }
 
-	   /*private: bool createVacancy(Vacancy* newVacancy) {
+	   private: bool createVacancy(Vacancy* newVacancy) {
 		   string company = msclr::interop::marshal_as<std::string>(companyTextBox->Text);
 		   string vacancy = msclr::interop::marshal_as<std::string>(vacancyTextBox->Text);
 		   string salary = msclr::interop::marshal_as<std::string>(salaryTextBox->Text);
@@ -609,39 +592,29 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 		   string email = msclr::interop::marshal_as<std::string>(emailTextBox->Text);
 		   string phoneNumber = msclr::interop::marshal_as<std::string>(phoneNumberTextBox->Text);
 		   string candidateReq = msclr::interop::marshal_as<std::string>(reqTextBox->Text);
+		   string logo = "";//msclr::interop::marshal_as<std::string>(logoFile);
 
+		   InputDataValidator validator = InputDataValidator();
+		   string errorMessage = "";
+		   bool isDataValid = validator.isInputDataValid(company, vacancy, salary, scedule, trialPer,
+			   email, phoneNumber, candidateReq, errorMessage, inputFields);
 
-		   if (!isInt(salary)) {
-			   String^ errorMessage = "Величина заработной платы должна составлять целое число";
-			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		   if (!isDataValid) {
+			   MessageBox::MessageBox::Show(gcnew String(errorMessage.c_str()), L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			   return false;
 		   }
-
-		   if (!isInt(trialPer)) {
-			   String^ errorMessage = "Длительность испытательного срока должна составлять целое число дней или 0, в случае его отсутствия";
-			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			   return false;
-		   }
-
-		   if (!(scedule == "5/2" || scedule == "2/2" || scedule == "посуточный" || scedule == "почасовой")) {
-			   String^ errorMessage = "Рабочий график должен соответствовать одному из вариантов:\n*   5/2\n*   2/2\n*   Посуточный\n*   Почасовой";
-			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			   return false;
-		   }
-
-		   if (!(isEmailValid(email))) {
-			   String^ errorMessage = "Проверьте введенный адрес электронной почты.";
-			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			   return false;
-		   }
-
-		   if (!(isPhoneValid(phoneNumber))) {
-			   String^ errorMessage = "Проверьте введенный номер телефона.";
-			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			   return false;
-		   }
+		    
+		   newVacancy->company = company;
+		   newVacancy->vacancyName = vacancy;
+		   newVacancy->salary = Convert::ToInt32(salaryTextBox->Text);
+		   newVacancy->workingSchedule = scedule;
+		   newVacancy->trialPeriod = Convert::ToInt32(trialPerTextBox->Text);
+		   newVacancy->phoneNumber = phoneNumber;
+		   newVacancy->email = email;
+		   newVacancy->candidateRequirement = validator.split(candidateReq, ", ");
+		   newVacancy->companyLogo = logo;
 		   return true;
-	   }*/
+	   }
 
 private: System::Void addVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (anyEmptyFields()) {
@@ -649,12 +622,12 @@ private: System::Void addVacancyButton_Click(System::Object^ sender, System::Eve
 		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
 		return; 
 	}
-	/*Vacancy* newVacancy = &Vacancy();
+	Vacancy* newVacancy = &Vacancy();
 	if (createVacancy(newVacancy)) {
 		vacancies.addVacancy(newVacancy);
 		String^ Message = "Вакансия была успешно создана.";
 		MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-	}*/
+	}
 }
 };
 }

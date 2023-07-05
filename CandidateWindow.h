@@ -4,6 +4,7 @@
 #include <format>
 #include <iostream>
 #include "Vacancies.h"
+#include "InputDataValidator.h"
 
 #pragma once
 
@@ -15,7 +16,7 @@ namespace WorkSearch {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-	using namespace std;
+	//using namespace std;
 
 	/// <summary>
 	/// Сводка для CandidateWindow
@@ -61,8 +62,6 @@ namespace WorkSearch {
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::CheckedListBox^ sceduleCheckedListBox;
 	private: System::Windows::Forms::DataGridView^ vacanciesGridView;
-
-
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ companyName;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ vacancyName;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ salary;
@@ -70,7 +69,24 @@ namespace WorkSearch {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ trialPeriod;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ contacts;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ condidateRequirments;
-	private: System::Windows::Forms::DataGridViewImageColumn^ companyLogo;
+	private: System::Windows::Forms::DataGridViewImageColumn^ companyLogoColumn;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -121,7 +137,7 @@ namespace WorkSearch {
 			this->trialPeriod = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->contacts = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->condidateRequirments = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->companyLogo = (gcnew System::Windows::Forms::DataGridViewImageColumn());
+			this->companyLogoColumn = (gcnew System::Windows::Forms::DataGridViewImageColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->LogoPictureBox))->BeginInit();
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -292,11 +308,11 @@ namespace WorkSearch {
 			this->vacanciesGridView->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->vacanciesGridView->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
 				this->companyName,
-					this->vacancyName, this->salary, this->scedule, this->trialPeriod, this->contacts, this->condidateRequirments, this->companyLogo
+					this->vacancyName, this->salary, this->scedule, this->trialPeriod, this->contacts, this->condidateRequirments, this->companyLogoColumn
 			});
 			this->vacanciesGridView->Location = System::Drawing::Point(218, 125);
 			this->vacanciesGridView->Name = L"vacanciesGridView";
-			this->vacanciesGridView->Size = System::Drawing::Size(845, 342);
+			this->vacanciesGridView->Size = System::Drawing::Size(839, 342);
 			this->vacanciesGridView->TabIndex = 9;
 			// 
 			// companyName
@@ -334,10 +350,10 @@ namespace WorkSearch {
 			this->condidateRequirments->HeaderText = L"Требования";
 			this->condidateRequirments->Name = L"condidateRequirments";
 			// 
-			// companyLogo
+			// companyLogoColumn
 			// 
-			this->companyLogo->HeaderText = L"Логотип компании";
-			this->companyLogo->Name = L"companyLogo";
+			this->companyLogoColumn->HeaderText = L"Логотип компании";
+			this->companyLogoColumn->Name = L"companyLogoColumn";
 			// 
 			// CandidateWindow
 			// 
@@ -371,56 +387,69 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 	String^ helpMessage = "Введите название интересующей вас вакансии и нажмите кнопку \"Найти\".\nПри необходимости укажите дополнительные параметры поиска\nи вновь нажмите кнопку \"Найти\"";
 	MessageBox::MessageBox::Show(helpMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
+
 private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	std::string _vacancyName = msclr::interop::marshal_as<std::string>(vacancyNameTextBox->Text);
 	if (_vacancyName == "") {
 		String^ errorMessage = "Укажите название вакансии";
 		MessageBox::MessageBox::Show(errorMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
-	String^ errorMessage =  vacancyNameTextBox->Text;
+	//String^ errorMessage =  vacancyNameTextBox->Text;
 	int minSalary = 0;
 	int maxSalary = 2 ^ 31 - 1;
 
 	if (minSalaryTextBox->Text != "") {
-		try { minSalary = Convert::ToInt32(minSalaryTextBox->Text); }
-		catch (const std::exception& ex) {
+		if (!InputDataValidator::isInt(minSalaryTextBox->Text)) {
 			String^ errorMessage = "Границы заработной платы должны быть целыми числами";
-		    MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
+			MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		else {
+			minSalary = Convert::ToInt32(minSalaryTextBox->Text);
 		}
 	}
 
 	if (maxSalaryTextBox->Text != "") {
-		try { 
-			maxSalary = Convert::ToInt32(minSalaryTextBox->Text); 
-			if (maxSalary < minSalary) {
-				String^ errorMessage = "Границы зароботной платы должны быть целыми числами";
-				MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			}
-		}
-		catch (const std::exception& ex) {
-			String^ errorMessage = "Границы зароботной платы должны быть целыми числами";
+		if (!InputDataValidator::isInt(maxSalaryTextBox->Text)) {
+			String^ errorMessage = "Границы заработной платы должны быть целыми числами";
 			MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return;
+		}
+		else {
+			minSalary = Convert::ToInt32(maxSalaryTextBox->Text);
 		}
 	}
 
 	if (sceduleCheckedListBox->CheckedItems->Count == 0) {
 		String^ errorMessage = "Выберете хотя бы один интересующий вас график работы";
 		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
 	}
 
 	std::unordered_set<std::string> appropriateScedules; 
 	for (int i = 0; i != sceduleCheckedListBox->CheckedItems->Count; i++) {
 		appropriateScedules.insert(msclr::interop::marshal_as<std::string>(sceduleCheckedListBox->CheckedItems[i]->ToString()));
 	}
-    //std::vector<int> vacIds = vacancies.findByParams(_vacancyName, minSalary, maxSalary, appropriateScedules);
-	std::vector<int> vacIds = vector<int>();
-	vacIds = { 1, 2 };
+    std::vector<int> vacIds = vacancies.findByParams(_vacancyName, minSalary, maxSalary, appropriateScedules);
+	/*std::vector<int> vacIds = vector<int>();
+	vacIds = { 1, 2 };*/
 
-	for (int i = 0; i != vacIds.size(); i++) {
-		//Vacancy* vac = vacancies.findById(vacIds[i]);
+	/*for (int i = 0; i != vacIds.size(); i++) {
+	    Vacancy* vac = vacancies.findById(vacIds[i]);
+	    auto arr = gcnew array<Object^>(10);
 
-		auto arr = gcnew array<System::Object^>(10);
-	}
+	    string req = InputDataValidator::join(vac->candidateRequirement, ", ");
+	    Bitmap^ logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
+
+	    arr[0] = vac->company;
+	    arr[1] = vac->vacancyName;
+	    arr[2] = vac->salary;
+	    arr[3] = vac->workingSchedule;
+	    arr[4] = vac->trialPeriod;
+	    arr[5] = "Email: " + vac->email + "\nPhone number: " + vac->phoneNumber;
+	    arr[6] = req;
+	    arr[7] = logo;
+	}*/
 }
 };
 }
