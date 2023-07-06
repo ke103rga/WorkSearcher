@@ -79,11 +79,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\CSProg\CppProjects\site_packages\rapidjson-master\include;D:\CSProg\CppProjects\site_packages\algorithm-develop\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\CSProg\CppProjects\site_packages\json-develop\include;D:\CSProg\CppProjects\site_packages\rapidjson-master\include;D:\CSProg\CppProjects\site_packages\algorithm-develop\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -109,11 +109,11 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>D:\CSProg\CppProjects\site_packages\rapidjson-master\include;D:\CSProg\CppProjects\site_packages\algorithm-develop\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\CSProg\CppProjects\site_packages\json-develop\include;D:\CSProg\CppProjects\site_packages\rapidjson-master\include;D:\CSProg\CppProjects\site_packages\algorithm-develop\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -121,6 +121,7 @@
     <ClCompile Include="CandidateWindow.cpp" />
     <ClCompile Include="EmployerWindow.cpp" />
     <ClCompile Include="InputDataValidator.cpp" />
+    <ClCompile Include="json_train.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Vacancies.cpp" />
@@ -133,7 +134,6 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="InputDataValidator.h" />
-    <ClInclude Include="Main.h" />
     <ClInclude Include="MainWindow.h">
       <FileType>CppForm</FileType>
     </ClInclude>

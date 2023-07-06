@@ -1,5 +1,4 @@
 #include <iostream>
-#include "EmployerWindow.h"
 #include "MainWindow.h"
 #include "Vacancies.h"
 
@@ -9,16 +8,13 @@ using namespace WorkSearch;
 
 [STAThreadAttribute()]
 int main()
-{
+{   vacancies.readFromJson(DB_FILE_PATH);
+
     // Running the main window
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     MainWindow form;
     Application::Run(% form);
-
-    // Collecting the database
-    string filePath = "";
-    //vacancies.readFromJson(filePath);
 
     char c;
     cin >> c;

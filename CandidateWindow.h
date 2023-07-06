@@ -394,7 +394,6 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 		String^ errorMessage = "Укажите название вакансии";
 		MessageBox::MessageBox::Show(errorMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
-	//String^ errorMessage =  vacancyNameTextBox->Text;
 	int minSalary = 0;
 	int maxSalary = 2 ^ 31 - 1;
 
@@ -436,6 +435,7 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 
 	/*for (int i = 0; i != vacIds.size(); i++) {
 	    Vacancy* vac = vacancies.findById(vacIds[i]);
+		if (!vac) { continur}
 	    auto arr = gcnew array<Object^>(10);
 
 	    string req = InputDataValidator::join(vac->candidateRequirement, ", ");

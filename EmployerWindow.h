@@ -54,6 +54,7 @@ namespace WorkSearch {
 		/// </summary>
 		~EmployerWindow()
 		{
+			vacancies.saveChanges(DB_FILE_PATH);
 			if (components)
 			{
 				delete components;
@@ -542,6 +543,7 @@ namespace WorkSearch {
 			this->Controls->Add(this->LogoPictureBox);
 			this->Name = L"EmployerWindow";
 			this->Text = L"EmployerWindow";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &EmployerWindow::setting_FormClosing);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->LogoPictureBox))->EndInit();
 			this->tableLayoutPanel1->ResumeLayout(false);
 			this->tableLayoutPanel1->PerformLayout();
@@ -549,6 +551,17 @@ namespace WorkSearch {
 			this->PerformLayout();
 
 		}
+
+private: System::Void setting_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
+{
+	System::Windows::Forms::DialogResult result;
+	result = MessageBox::Show("Сохранить все внесенные изменения?", "WorkSearcher", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+	if (result == System::Windows::Forms::DialogResult::Yes && !vacancies.savedChanges)
+	{
+		vacancies.saveChanges(DB_FILE_PATH);
+	}
+	else e->Cancel = true;
+}
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (!InputDataValidator::isInt(vacIdTextBox->Text)) {
 		String^ helpMessage = "Идентификатор вакансии - целое положительное число";
@@ -557,9 +570,16 @@ private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::
 		return;
 	}
 	int idToDelete = Convert::ToInt32(this->vacIdTextBox->Text);
-	vacancies.deleteVacancy(idToDelete);
-	String^ successMessage = "Вакансия удалена";
-	MessageBox::MessageBox::Show(successMessage, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	if (vacancies.deleteVacancy(idToDelete)) {
+		String^ successMessage = "Вакансия удалена";
+		MessageBox::MessageBox::Show(successMessage, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		vacancies.savedChanges = false;
+	}
+	else {
+		String^ errorMessage = "Вакансия с таким идентификатором отсутствует в базе";
+		MessageBox::MessageBox::Show(errorMessage, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	vacIdTextBox->Text = "";
 }
 
 private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
@@ -622,12 +642,17 @@ private: System::Void addVacancyButton_Click(System::Object^ sender, System::Eve
 		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
 		return; 
 	}
-	Vacancy* newVacancy = &Vacancy();
+	Vacancy* newVacancy = &Vacancy(vacancies.getNextId());
 	if (createVacancy(newVacancy)) {
-		vacancies.addVacancy(newVacancy);
-		String^ Message = "Вакансия была успешно создана.";
+		int newId = vacancies.addVacancy(*newVacancy);
+		String^ Message = "Вакансия была успешно создана.\nИдентификатор вакансии: " + newId.ToString();
 		MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		for (int i = 0; i != inputFields.Count; i++) {
+			inputFields[i]->Text = "";
+		}
+		vacancies.savedChanges = false;
 	}
 }
+
 };
 }

@@ -238,27 +238,38 @@ namespace WorkSearch {
 			this->MaximizeBox = false;
 			this->Name = L"MainWindow";
 			this->Text = L"WorkSearcher";
+			this->Load += gcnew System::EventHandler(this, &MainWindow::MainWindow_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->LogoPictureBox))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
+
 private: System::Void candidateButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	CandidateWindow^ form = gcnew CandidateWindow();
 	form->ShowDialog();
 	this->Visible = false;
 }
+
 private: System::Void employerButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	EmployerWindow^ form = gcnew EmployerWindow();
 	form->ShowDialog();
 }
+
 private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	String^ helpMessage = "Для поиска работы воспользуйтесь разделом \"Для соискателей\"\nДля поиска сотрудников воспользуйтесь разделом \"Для работодателей\"\n";
 	MessageBox::MessageBox::Show(helpMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
+
 private: System::Void authorLinkedLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	String^ authorMessage = "Автор программы: Разуев Георгий\nGitHub: https://github.com/ke103rga";
 	MessageBox::MessageBox::Show(authorMessage, L"Создатель", MessageBoxButtons::OK, MessageBoxIcon::Information);
+}
+
+private: System::Void MainWindow_Load(System::Object^ sender, System::EventArgs^ e) {
+	return;
+	// Collecting the database
+	//vacancies.readFromJson(DB_FILE_PATH);
 }
 };
 }

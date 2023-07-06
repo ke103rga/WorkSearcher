@@ -6,7 +6,7 @@ using namespace std;
 #pragma once
 class Vacancy {
 public:
-	/*Vacancy(int id=0, string company="", string companyLogo = "", string vacancyName = "",
+	Vacancy(int id=0, string company="", string companyLogo = "", string vacancyName = "",
 	        int salary = 0, string workingSchedule = "", int trialPeriod = 0, string phoneNumber = "",
 	        string email = "", vector<string> candidateRequirement = vector<string>()):
 		id(id), company(company), companyLogo(companyLogo), vacancyName(vacancyName), salary(salary), 
@@ -15,7 +15,8 @@ public:
 		std::vector<string> v(2);
 		v = { "1", "2"};
 		candidateRequirement = v;
-	}*/
+	}
+	Vacancy() {}
 
 	int id;
 	string company;
