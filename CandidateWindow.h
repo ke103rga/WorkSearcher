@@ -98,6 +98,14 @@ namespace WorkSearch {
 
 
 
+
+
+
+
+
+
+
+
 	protected:
 
 	private:
@@ -352,7 +360,9 @@ namespace WorkSearch {
 			// 
 			// companyLogoColumn
 			// 
+			this->companyLogoColumn->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::Fill;
 			this->companyLogoColumn->HeaderText = L"Логотип компании";
+			this->companyLogoColumn->ImageLayout = System::Windows::Forms::DataGridViewImageCellLayout::Zoom;
 			this->companyLogoColumn->Name = L"companyLogoColumn";
 			// 
 			// CandidateWindow
@@ -449,7 +459,7 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 	    auto arr = gcnew cli::array<Object^>(10);
 
 	    string req = InputDataValidator::join(vac->candidateRequirement, ", ");
-	    //Bitmap^ logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
+	    Bitmap^ logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
 		string contacts = "Email: " + vac->email + "\nPhone number: " + vac->phoneNumber;
 
 	    arr[0] = gcnew String(vac->company.c_str());
@@ -459,7 +469,7 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 	    arr[4] = gcnew String(vac->trialPeriod.ToString());  
 	    arr[5] = gcnew String(contacts.c_str()); 
 	    arr[6] = gcnew String(req.c_str());
-	    //arr[7] = logo;
+	    arr[7] = logo;
 		vacanciesGridView->Rows->Add(arr);
 	}
 }

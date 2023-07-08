@@ -1,4 +1,6 @@
 #include <regex>
+#include <iostream>
+#include <fstream>
 #include "Vacancies.h"
 #include "InputDataValidator.h"
 #include <msclr\marshal_cppstd.h>
@@ -22,6 +24,7 @@ namespace WorkSearch {
 	public ref class EmployerWindow : public System::Windows::Forms::Form
 	{
 	public:
+		bool choosedFile = false;
 		String^ logoFile;
 		List<RichTextBox^> inputFields;
 
@@ -593,14 +596,16 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 				   return true;
 			   }
 		   }
-		   return logoFile == "";
+		   return !choosedFile;
 	   }
 
        private: System::Void selectLogoButon_Click(System::Object^ sender, System::EventArgs^ e) {
-		   // TODO 
-		   SaveFileDialog^ sfd = gcnew SaveFileDialog();
-		   sfd->ShowDialog();
-		   logoFile = sfd->FileName;
+		   
+		   OpenFileDialog^ ofd = gcnew OpenFileDialog();
+		   ofd->Filter = "Image Files|*.png;";
+		   ofd->ShowDialog();
+		   logoFile = gcnew String(ofd->FileName->ToCharArray());
+		   choosedFile = true;
        }
 
 	   private: bool createVacancy(Vacancy* newVacancy) {
@@ -612,7 +617,7 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 		   string email = msclr::interop::marshal_as<std::string>(emailTextBox->Text);
 		   string phoneNumber = msclr::interop::marshal_as<std::string>(phoneNumberTextBox->Text);
 		   string candidateReq = msclr::interop::marshal_as<std::string>(reqTextBox->Text);
-		   string logo = "";//msclr::interop::marshal_as<std::string>(logoFile);
+		   string logo = "companyLogos\\" + msclr::interop::marshal_as<std::string>(newVacancy->id.ToString()) + "LogoFile.png";
 
 		   InputDataValidator validator = InputDataValidator();
 		   string errorMessage = "";
@@ -623,6 +628,10 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 			   MessageBox::MessageBox::Show(gcnew String(errorMessage.c_str()), L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			   return false;
 		   }
+
+		   std::ifstream src(msclr::interop::marshal_as<std::string>(logoFile->ToString()), std::ios::binary);
+		   std::ofstream dest(logo, std::ios::binary);
+		   dest << src.rdbuf();
 		    
 		   newVacancy->company = company;
 		   newVacancy->vacancyName = vacancy;
