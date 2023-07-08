@@ -1,11 +1,11 @@
 #include <unordered_map>
 #include "Vacancy.h"
+#include "InputDataValidator.h"
 #include "Vacancies.h"
 #include <fstream>
 #include <iostream>
-#include <nlohmann/json.hpp>
+#include <msclr\marshal_cppstd.h>
 
-using json = nlohmann::json;
 using namespace std;
 
 #pragma once
@@ -14,67 +14,76 @@ Vacancies::Vacancies() {
 };
 
 #pragma once
-bool Vacancies::readFromJson(string filePath) { 
-	std::ifstream i(filePath);
-	json j;
-	i >> j;
+bool Vacancies::readFromTXT(string filePath) { 
 
-	auto j_vacancies = j["vacancies"];
+	std::string line;
+	std::ifstream in(filePath);
+	if (in.is_open())
+	{
+		std::getline(in, line);
+		nextId = System::Convert::ToInt32(gcnew System::String(line.c_str()));
 
-	for (int i = 0; i != j_vacancies.size(); i++) {
-		auto j_vacancy = j_vacancies[i];
+		while (std::getline(in, line))
+		{
+			vector<string> vacancyAttrs = InputDataValidator::split(line, ";");
 
-		int id = j_vacancy["id"];
-		string company = j_vacancy["company"];
-		string companyLogo = j_vacancy["companyLogo"];
-		string vacancyName = j_vacancy["vacancyName"];
-		int salary = j_vacancy["salary"];
-		string workingScedule = j_vacancy["workingSchedule"];
-		int trialPeriod = j_vacancy["trialPeriod"];
-		string phoneNumber = j_vacancy["phoneNumber"];
-		string email = j_vacancy["email"];
-		vector<string> candidateRequirement = j_vacancy["candidateRequirement"];
+			if (vacancyAttrs.size() == 0) {
+				continue;
+			}
+			int id = System::Convert::ToInt32(gcnew System::String(vacancyAttrs[0].c_str()));
+			string company = vacancyAttrs[1];
+			string companyLogo = vacancyAttrs[2];
+			string vacancyName = vacancyAttrs[3];
+			int salary = System::Convert::ToInt32(gcnew System::String(vacancyAttrs[4].c_str()));
+			string workingSchedule = vacancyAttrs[5];
+			int trialPeriod = System::Convert::ToInt32(gcnew System::String(vacancyAttrs[6].c_str()));
+			string phoneNumber = vacancyAttrs[7];
+			string email = vacancyAttrs[8];
+			vector<string> candidateRequirement = InputDataValidator::split(vacancyAttrs[9], ", ");
 
-		Vacancy newVacancy(id, company, companyLogo, vacancyName,
-			salary, workingScedule, trialPeriod, phoneNumber,
-			email, candidateRequirement);
+			Vacancy newVacancy(id, company, companyLogo, vacancyName,
+				salary, workingSchedule, trialPeriod, phoneNumber,
+				email, candidateRequirement);
 
-		vacancies[j_vacancy["id"]] = newVacancy;
+			vacancies[id] = newVacancy;
+		}
 	}
+	in.close();
+
+	cout << vacancies.size();
 
 	return true;
 }
 
 #pragma once
 bool Vacancies::saveChanges(string filePath) {
-	json j;
 
-	json j_vacancies = json::array();
-
+	string txt = msclr::interop::marshal_as<std::string>(nextId.ToString()) + "\n";
 	for (std::pair<int, Vacancy> element : vacancies) {
 		int vacId = element.first;
 		Vacancy curVac = element.second;
 
-		json j_curVacancyData = json({});
-		j_curVacancyData["id"] = curVac.id;
-		j_curVacancyData["company"] = curVac.company;
-		j_curVacancyData["companyLogo"] = curVac.companyLogo;
-		j_curVacancyData["vacancyName"] = curVac.vacancyName;
-		j_curVacancyData["salary"] = curVac.salary;
-		j_curVacancyData["workingSchedule"] = curVac.workingSchedule;
-		j_curVacancyData["trialPeriod"] = curVac.trialPeriod;
-		j_curVacancyData["phoneNumber"] = curVac.phoneNumber;
-		j_curVacancyData["email"] = curVac.email;
-		j_curVacancyData["candidateRequirement"] = curVac.candidateRequirement;
-
-		j_vacancies.push_back(j_curVacancyData);
+		txt = txt +
+			msclr::interop::marshal_as<std::string>(curVac.id.ToString()) + ";" +
+			curVac.company + ";" +
+			curVac.companyLogo + ";" +
+			curVac.vacancyName + ";" +
+			msclr::interop::marshal_as<std::string>(curVac.salary.ToString()) + ";" +
+			curVac.workingSchedule + ";" +
+			msclr::interop::marshal_as<std::string>(curVac.trialPeriod.ToString()) + ";" +
+			curVac.phoneNumber + ";" +
+			curVac.email + ";" +
+			InputDataValidator::join(curVac.candidateRequirement, ", ") + "\n";
 	}
 
-	j["nextId"] = nextId;
-	j["vacancies"] = j_vacancies;
-
-	std::ofstream o("vacanciesData.json");
-	o << std::setw(4) << j << std::endl;
+	std::ofstream out;
+	out.open(filePath);
+	if (out.is_open())
+	{
+		out << txt << std::endl;
+	}
+	out.close();
+	return true;
 
 	return true;
 }
@@ -96,8 +105,15 @@ int Vacancies::addVacancy(Vacancy newVacancy) {
 
 vector<int> Vacancies::findByParams(string vacancyName, int minSalary, int maxSalary, unordered_set<string> scedule) {
 	vector<int> ids;
-	ids.push_back(1);
-	ids.push_back(2);
+	for (std::pair<int, Vacancy> element : vacancies) {
+		int vacId = element.first;
+		Vacancy curVac = element.second;
+		cout << curVac.vacancyName << endl;
+		if  (curVac.vacancyName.find(vacancyName) != std::string::npos  && (curVac.salary >= minSalary )
+			/*&& (curVac.salary <= maxSalary)*/  && scedule.find(curVac.workingSchedule) != scedule.end()) {
+			ids.push_back(vacId);
+		}
+	}
 	return ids;
 }
 
@@ -112,4 +128,5 @@ Vacancy* Vacancies::findById(int id) {
 int Vacancies::getNextId() { return nextId;  }
 
 Vacancies vacancies = Vacancies();
-string DB_FILE_PATH = "vacanciesData.json";
+string DB_FILE_PATH = "vacanciesData.txt";
+

@@ -4,11 +4,13 @@
 
 using namespace std;
 using namespace WorkSearch;
+using namespace Newtonsoft::Json;
  
 
 [STAThreadAttribute()]
 int main()
-{   vacancies.readFromJson(DB_FILE_PATH);
+{   
+    vacancies.readFromTXT(DB_FILE_PATH);
 
     // Running the main window
     Application::EnableVisualStyles();

@@ -390,21 +390,24 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 
 private: System::Void searchButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	std::string _vacancyName = msclr::interop::marshal_as<std::string>(vacancyNameTextBox->Text);
+	vacanciesGridView->Rows->Clear();
 	if (_vacancyName == "") {
 		String^ errorMessage = "Укажите название вакансии";
 		MessageBox::MessageBox::Show(errorMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 	int minSalary = 0;
-	int maxSalary = 2 ^ 31 - 1;
+	int maxSalary = 2^31 - 1;
 
 	if (minSalaryTextBox->Text != "") {
 		if (!InputDataValidator::isInt(minSalaryTextBox->Text)) {
 			String^ errorMessage = "Границы заработной платы должны быть целыми числами";
 			MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			minSalaryTextBox->Text = "";
 			return;
 		}
 		else {
 			minSalary = Convert::ToInt32(minSalaryTextBox->Text);
+			cout << minSalary;
 		}
 	}
 
@@ -412,10 +415,11 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 		if (!InputDataValidator::isInt(maxSalaryTextBox->Text)) {
 			String^ errorMessage = "Границы заработной платы должны быть целыми числами";
 			MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			maxSalaryTextBox->Text = "";
 			return;
 		}
 		else {
-			minSalary = Convert::ToInt32(maxSalaryTextBox->Text);
+			maxSalary = Convert::ToInt32(maxSalaryTextBox->Text);
 		}
 	}
 
@@ -429,27 +433,35 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 	for (int i = 0; i != sceduleCheckedListBox->CheckedItems->Count; i++) {
 		appropriateScedules.insert(msclr::interop::marshal_as<std::string>(sceduleCheckedListBox->CheckedItems[i]->ToString()));
 	}
+
     std::vector<int> vacIds = vacancies.findByParams(_vacancyName, minSalary, maxSalary, appropriateScedules);
+	if (vacIds.empty()) {
+		String^ sadMessage = "По вашему запросу не нашлось ни одной вакансии\nНо вы не отчаивайтесь.";
+		MessageBox::MessageBox::Show(sadMessage, L"Не повезло", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		return;
+	}
 	/*std::vector<int> vacIds = vector<int>();
 	vacIds = { 1, 2 };*/
 
-	/*for (int i = 0; i != vacIds.size(); i++) {
+	for (int i = 0; i != vacIds.size(); i++) {
 	    Vacancy* vac = vacancies.findById(vacIds[i]);
-		if (!vac) { continur}
-	    auto arr = gcnew array<Object^>(10);
+		if (!vac) { continue;  }
+	    auto arr = gcnew cli::array<Object^>(10);
 
 	    string req = InputDataValidator::join(vac->candidateRequirement, ", ");
-	    Bitmap^ logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
+	    //Bitmap^ logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
+		string contacts = "Email: " + vac->email + "\nPhone number: " + vac->phoneNumber;
 
-	    arr[0] = vac->company;
-	    arr[1] = vac->vacancyName;
-	    arr[2] = vac->salary;
-	    arr[3] = vac->workingSchedule;
-	    arr[4] = vac->trialPeriod;
-	    arr[5] = "Email: " + vac->email + "\nPhone number: " + vac->phoneNumber;
-	    arr[6] = req;
-	    arr[7] = logo;
-	}*/
+	    arr[0] = gcnew String(vac->company.c_str());
+	    arr[1] = gcnew String(vac->vacancyName.c_str());
+	    arr[2] = gcnew String(vac->salary.ToString()); 
+	    arr[3] = gcnew String(vac->workingSchedule.c_str()); 
+	    arr[4] = gcnew String(vac->trialPeriod.ToString());  
+	    arr[5] = gcnew String(contacts.c_str()); 
+	    arr[6] = gcnew String(req.c_str());
+	    //arr[7] = logo;
+		vacanciesGridView->Rows->Add(arr);
+	}
 }
 };
 }

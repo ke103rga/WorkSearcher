@@ -15,7 +15,7 @@ public:
 	Vacancy* findById(int id);//Поиск по идентификатору
 	vector<int> findByParams(string vacancyName, int minSalary, int maxSalary, unordered_set<string> scedule);//Поиск по одному или нескольким параметрам
 
-	bool readFromJson(string filePath);//Чтение данных из файла
+	bool readFromTXT(string filePath);//Чтение данных из файла
 	bool saveChanges(string filePath);//Сохранение изменений
 
 	bool deleteVacancy(int id);//Удаление вакансии

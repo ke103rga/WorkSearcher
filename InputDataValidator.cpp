@@ -85,6 +85,12 @@ bool InputDataValidator::isInputDataValid(string company, string vacancy, string
 }
 
 string InputDataValidator::join(vector<string>& strings, string delim) {
+	if (strings.size() == 0) {
+		return "empty vector";
+	}
+	if (strings.size() == 1) {
+		return strings[0];
+	}
 	string res;
 	for (int i = 0; i < strings.size() - 1; i++) {
 		res = res + strings[i] + delim;

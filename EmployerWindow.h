@@ -560,7 +560,7 @@ private: System::Void setting_FormClosing(System::Object^ sender, System::Window
 	{
 		vacancies.saveChanges(DB_FILE_PATH);
 	}
-	else e->Cancel = true;
+	//e->Cancel = true;
 }
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	if (!InputDataValidator::isInt(vacIdTextBox->Text)) {

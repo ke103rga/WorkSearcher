@@ -11,11 +11,7 @@ public:
 	        string email = "", vector<string> candidateRequirement = vector<string>()):
 		id(id), company(company), companyLogo(companyLogo), vacancyName(vacancyName), salary(salary), 
 		workingSchedule(workingSchedule), trialPeriod(trialPeriod), phoneNumber(phoneNumber), 
-		email(email) {
-		std::vector<string> v(2);
-		v = { "1", "2"};
-		candidateRequirement = v;
-	}
+		email(email), candidateRequirement (candidateRequirement) {}
 	Vacancy() {}
 
 	int id;
