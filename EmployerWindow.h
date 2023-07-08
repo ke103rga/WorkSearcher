@@ -3,6 +3,7 @@
 #include <fstream>
 #include "Vacancies.h"
 #include "InputDataValidator.h"
+#include "CorrectVacancyWindow.h"
 #include <msclr\marshal_cppstd.h>
 
 using namespace System::Collections::Generic;
@@ -27,7 +28,7 @@ namespace WorkSearch {
 		bool choosedFile = false;
 		String^ logoFile;
 		List<RichTextBox^> inputFields;
-
+	
 		EmployerWindow(void)
 		{
 			InitializeComponent();
@@ -70,7 +71,6 @@ namespace WorkSearch {
 	private: System::Windows::Forms::RichTextBox^ companyTextBox;
 	private: System::Windows::Forms::RichTextBox^ vacancyTextBox;
 
-
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
@@ -104,6 +104,9 @@ namespace WorkSearch {
 	private: System::Windows::Forms::RichTextBox^ vacIdTextBox;
 
 	private: System::Windows::Forms::Button^ deleteVacancyButton;
+
+	private: System::Windows::Forms::Button^ CorrectExistvacButton;
+	private: System::Windows::Forms::Label^ label11;
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -153,6 +156,8 @@ namespace WorkSearch {
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->vacIdTextBox = (gcnew System::Windows::Forms::RichTextBox());
 			this->deleteVacancyButton = (gcnew System::Windows::Forms::Button());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->CorrectExistvacButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->LogoPictureBox))->BeginInit();
 			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
@@ -531,6 +536,29 @@ namespace WorkSearch {
 			this->deleteVacancyButton->UseVisualStyleBackColor = true;
 			this->deleteVacancyButton->Click += gcnew System::EventHandler(this, &EmployerWindow::deleteVacancyButton_Click);
 			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label11->Location = System::Drawing::Point(8, 387);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(272, 40);
+			this->label11->TabIndex = 23;
+			this->label11->Text = L"Для редактирования вакансии\nвоспользуйтесь:";
+			// 
+			// CorrectExistvacButton
+			// 
+			this->CorrectExistvacButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->CorrectExistvacButton->Location = System::Drawing::Point(12, 434);
+			this->CorrectExistvacButton->Name = L"CorrectExistvacButton";
+			this->CorrectExistvacButton->Size = System::Drawing::Size(202, 60);
+			this->CorrectExistvacButton->TabIndex = 24;
+			this->CorrectExistvacButton->Text = L"Редактировать вакансию";
+			this->CorrectExistvacButton->UseVisualStyleBackColor = true;
+			this->CorrectExistvacButton->Click += gcnew System::EventHandler(this, &EmployerWindow::CorrectExistvacButton_Click);
+			// 
 			// EmployerWindow
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -544,6 +572,8 @@ namespace WorkSearch {
 			this->Controls->Add(this->tableLayoutPanel1);
 			this->Controls->Add(this->helpLinkLabel);
 			this->Controls->Add(this->LogoPictureBox);
+			this->Controls->Add(this->CorrectExistvacButton);
+			this->Controls->Add(this->label11);
 			this->Name = L"EmployerWindow";
 			this->Text = L"EmployerWindow";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &EmployerWindow::setting_FormClosing);
@@ -563,9 +593,13 @@ private: System::Void setting_FormClosing(System::Object^ sender, System::Window
 	{
 		vacancies.saveChanges(DB_FILE_PATH);
 	}
-	//e->Cancel = true;
 }
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (vacIdTextBox->Text == "") {
+		String^ helpMessage = "Введите идентификатор вакансии";
+		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
+	}
 	if (!InputDataValidator::isInt(vacIdTextBox->Text)) {
 		String^ helpMessage = "Идентификатор вакансии - целое положительное число";
 		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -663,5 +697,9 @@ private: System::Void addVacancyButton_Click(System::Object^ sender, System::Eve
 	}
 }
 
+private: System::Void CorrectExistvacButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	CorrectVacancyWindow^ form = gcnew CorrectVacancyWindow();
+	form->ShowDialog();
+}
 };
 }

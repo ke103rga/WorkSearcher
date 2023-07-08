@@ -84,7 +84,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -115,12 +115,13 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CandidateWindow.cpp" />
+    <ClCompile Include="CorrectVacancyWindow.cpp" />
     <ClCompile Include="EmployerWindow.cpp" />
     <ClCompile Include="InputDataValidator.cpp" />
     <ClCompile Include="json_train.cpp" />
@@ -132,6 +133,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CandidateWindow.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="CorrectVacancyWindow.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="EmployerWindow.h">
@@ -157,6 +161,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CandidateWindow.resx">
       <DependentUpon>CandidateWindow.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CorrectVacancyWindow.resx">
+      <DependentUpon>CorrectVacancyWindow.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EmployerWindow.resx">
       <DependentUpon>EmployerWindow.h</DependentUpon>
