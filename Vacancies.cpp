@@ -5,6 +5,10 @@
 #include <fstream>
 #include <iostream>
 #include <msclr\marshal_cppstd.h>
+#include <algorithm>
+#include <cctype>
+#include <string>
+
 
 using namespace std;
 
@@ -108,8 +112,15 @@ vector<int> Vacancies::findByParams(string vacancyName, int minSalary, int maxSa
 	for (std::pair<int, Vacancy> element : vacancies) {
 		int vacId = element.first;
 		Vacancy curVac = element.second;
-		cout << curVac.vacancyName << endl;
-		if  (curVac.vacancyName.find(vacancyName) != std::string::npos  && (curVac.salary >= minSalary )
+
+		std::string lowercurVacName = curVac.vacancyName;
+		std::transform(lowercurVacName.begin(), lowercurVacName.end(), lowercurVacName.begin(),
+			[](unsigned char c) { return std::tolower(c); });
+		std::string searchVacName = vacancyName;
+		std::transform(searchVacName.begin(), searchVacName.end(), searchVacName.begin(),
+			[](unsigned char c) { return std::tolower(c); });
+
+		if  (lowercurVacName.find(searchVacName) != std::string::npos  && (curVac.salary >= minSalary )
 			/*&& (curVac.salary <= maxSalary)*/  && scedule.find(curVac.workingSchedule) != scedule.end()) {
 			ids.push_back(vacId);
 		}
@@ -126,6 +137,12 @@ Vacancy* Vacancies::findById(int id) {
 }
 
 int Vacancies::getNextId() { return nextId;  }
+
+bool Vacancies::containsId(int id) { return vacancies.find(id) != vacancies.end(); }
+
+void Vacancies::updateVacacncy(int id, Vacancy updatedVacancy) {
+	vacancies[id] = updatedVacancy;
+}
 
 Vacancies vacancies = Vacancies();
 string DB_FILE_PATH = "vacanciesData.txt";

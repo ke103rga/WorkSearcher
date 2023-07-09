@@ -22,6 +22,9 @@ public:
 	int addVacancy(Vacancy newVacancy);//Добавление вакансии
 
 	int getNextId();
+	bool containsId(int id);
+
+	void updateVacacncy(int id, Vacancy updatedVacancy);
 };
 
 #pragma once

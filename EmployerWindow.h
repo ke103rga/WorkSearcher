@@ -3,7 +3,6 @@
 #include <fstream>
 #include "Vacancies.h"
 #include "InputDataValidator.h"
-#include "CorrectVacancyWindow.h"
 #include <msclr\marshal_cppstd.h>
 
 using namespace System::Collections::Generic;
@@ -26,9 +25,15 @@ namespace WorkSearch {
 	{
 	public:
 		bool choosedFile = false;
+		bool fileChanged = false;
 		String^ logoFile;
-		List<RichTextBox^> inputFields;
+	private: System::Windows::Forms::CheckBox^ chooseActionTheckBox;
 	
+	private: System::Windows::Forms::Label^ label11;
+	private: System::Windows::Forms::TextBox^ correctVacIdTextBox;
+	private: System::Windows::Forms::Button^ startCorrectButton;
+		   List<RichTextBox^> inputFields;
+	public:
 		EmployerWindow(void)
 		{
 			InitializeComponent();
@@ -50,6 +55,10 @@ namespace WorkSearch {
 			inputFields.Add(emailTextBox);
 			inputFields.Add(phoneNumberTextBox);
 			inputFields.Add(reqTextBox);
+
+			label11->Visible = false;
+			correctVacIdTextBox->Visible = false;
+			startCorrectButton->Visible = false;
 		}
 
 	protected:
@@ -105,8 +114,8 @@ namespace WorkSearch {
 
 	private: System::Windows::Forms::Button^ deleteVacancyButton;
 
-	private: System::Windows::Forms::Button^ CorrectExistvacButton;
-	private: System::Windows::Forms::Label^ label11;
+	/*private: System::Windows::Forms::Button^ CorrectExistvacButton;
+	private: System::Windows::Forms::Label^ label11;*/
 
 
 	private: System::ComponentModel::IContainer^ components;
@@ -156,8 +165,10 @@ namespace WorkSearch {
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->vacIdTextBox = (gcnew System::Windows::Forms::RichTextBox());
 			this->deleteVacancyButton = (gcnew System::Windows::Forms::Button());
+			this->chooseActionTheckBox = (gcnew System::Windows::Forms::CheckBox());
 			this->label11 = (gcnew System::Windows::Forms::Label());
-			this->CorrectExistvacButton = (gcnew System::Windows::Forms::Button());
+			this->correctVacIdTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->startCorrectButton = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->LogoPictureBox))->BeginInit();
 			this->tableLayoutPanel1->SuspendLayout();
 			this->SuspendLayout();
@@ -165,9 +176,10 @@ namespace WorkSearch {
 			// LogoPictureBox
 			// 
 			this->LogoPictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"LogoPictureBox.Image")));
-			this->LogoPictureBox->Location = System::Drawing::Point(12, 12);
+			this->LogoPictureBox->Location = System::Drawing::Point(18, 18);
+			this->LogoPictureBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->LogoPictureBox->Name = L"LogoPictureBox";
-			this->LogoPictureBox->Size = System::Drawing::Size(70, 63);
+			this->LogoPictureBox->Size = System::Drawing::Size(105, 97);
 			this->LogoPictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
 			this->LogoPictureBox->TabIndex = 4;
 			this->LogoPictureBox->TabStop = false;
@@ -178,9 +190,10 @@ namespace WorkSearch {
 			this->helpLinkLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->helpLinkLabel->LinkColor = System::Drawing::Color::DimGray;
-			this->helpLinkLabel->Location = System::Drawing::Point(88, 12);
+			this->helpLinkLabel->Location = System::Drawing::Point(132, 18);
+			this->helpLinkLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->helpLinkLabel->Name = L"helpLinkLabel";
-			this->helpLinkLabel->Size = System::Drawing::Size(58, 16);
+			this->helpLinkLabel->Size = System::Drawing::Size(92, 25);
 			this->helpLinkLabel->TabIndex = 5;
 			this->helpLinkLabel->TabStop = true;
 			this->helpLinkLabel->Text = L"Помощь";
@@ -190,7 +203,7 @@ namespace WorkSearch {
 			// 
 			this->tableLayoutPanel1->ColumnCount = 3;
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Absolute,
-				23)));
+				34)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
 				35.93315F)));
 			this->tableLayoutPanel1->ColumnStyles->Add((gcnew System::Windows::Forms::ColumnStyle(System::Windows::Forms::SizeType::Percent,
@@ -216,7 +229,8 @@ namespace WorkSearch {
 			this->tableLayoutPanel1->Controls->Add(this->reqTipLabel, 0, 8);
 			this->tableLayoutPanel1->Controls->Add(this->SceduleTipLabel, 0, 4);
 			this->tableLayoutPanel1->Controls->Add(this->phoneNumberTextBox, 2, 7);
-			this->tableLayoutPanel1->Location = System::Drawing::Point(316, 70);
+			this->tableLayoutPanel1->Location = System::Drawing::Point(491, 182);
+			this->tableLayoutPanel1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
 			this->tableLayoutPanel1->RowCount = 9;
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 11.11111F)));
@@ -228,8 +242,8 @@ namespace WorkSearch {
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 11.11111F)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 11.11111F)));
 			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 11.11111F)));
-			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 20)));
-			this->tableLayoutPanel1->Size = System::Drawing::Size(382, 366);
+			this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 31)));
+			this->tableLayoutPanel1->Size = System::Drawing::Size(573, 563);
 			this->tableLayoutPanel1->TabIndex = 6;
 			// 
 			// trialPerTipLabel
@@ -241,9 +255,10 @@ namespace WorkSearch {
 			this->trialPerTipLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->trialPerTipLabel->ForeColor = System::Drawing::SystemColors::HotTrack;
-			this->trialPerTipLabel->Location = System::Drawing::Point(3, 200);
+			this->trialPerTipLabel->Location = System::Drawing::Point(4, 310);
+			this->trialPerTipLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->trialPerTipLabel->Name = L"trialPerTipLabel";
-			this->trialPerTipLabel->Size = System::Drawing::Size(17, 40);
+			this->trialPerTipLabel->Size = System::Drawing::Size(26, 62);
 			this->trialPerTipLabel->TabIndex = 19;
 			this->trialPerTipLabel->Text = L"\?";
 			this->trialPerTipLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -255,9 +270,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label9->Location = System::Drawing::Point(26, 320);
+			this->label9->Location = System::Drawing::Point(38, 496);
+			this->label9->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label9->Name = L"label9";
-			this->label9->Size = System::Drawing::Size(123, 46);
+			this->label9->Size = System::Drawing::Size(185, 67);
 			this->label9->TabIndex = 10;
 			this->label9->Text = L"Требования к кандидатуре";
 			this->label9->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -269,18 +285,20 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label1->Location = System::Drawing::Point(26, 0);
+			this->label1->Location = System::Drawing::Point(38, 0);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(123, 40);
+			this->label1->Size = System::Drawing::Size(185, 62);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Компания";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// companyTextBox
 			// 
-			this->companyTextBox->Location = System::Drawing::Point(155, 3);
+			this->companyTextBox->Location = System::Drawing::Point(231, 5);
+			this->companyTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->companyTextBox->Name = L"companyTextBox";
-			this->companyTextBox->Size = System::Drawing::Size(223, 34);
+			this->companyTextBox->Size = System::Drawing::Size(332, 50);
 			this->companyTextBox->TabIndex = 1;
 			this->companyTextBox->Text = L"";
 			// 
@@ -291,9 +309,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label2->Location = System::Drawing::Point(26, 40);
+			this->label2->Location = System::Drawing::Point(38, 62);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(123, 40);
+			this->label2->Size = System::Drawing::Size(185, 62);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Логотип";
 			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -305,9 +324,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label3->Location = System::Drawing::Point(26, 80);
+			this->label3->Location = System::Drawing::Point(38, 124);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(123, 40);
+			this->label3->Size = System::Drawing::Size(185, 62);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Название вакансии";
 			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -319,9 +339,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label4->Location = System::Drawing::Point(26, 120);
+			this->label4->Location = System::Drawing::Point(38, 186);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(123, 40);
+			this->label4->Size = System::Drawing::Size(185, 62);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"Зарплата";
 			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -333,9 +354,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label5->Location = System::Drawing::Point(26, 160);
+			this->label5->Location = System::Drawing::Point(38, 248);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(123, 40);
+			this->label5->Size = System::Drawing::Size(185, 62);
 			this->label5->TabIndex = 6;
 			this->label5->Text = L"Рабочий график";
 			this->label5->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -347,9 +369,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label6->Location = System::Drawing::Point(26, 200);
+			this->label6->Location = System::Drawing::Point(38, 310);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(123, 40);
+			this->label6->Size = System::Drawing::Size(185, 62);
 			this->label6->TabIndex = 7;
 			this->label6->Text = L"Испытательный срок";
 			this->label6->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -361,9 +384,10 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label7->Location = System::Drawing::Point(26, 240);
+			this->label7->Location = System::Drawing::Point(38, 372);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(123, 40);
+			this->label7->Size = System::Drawing::Size(185, 62);
 			this->label7->TabIndex = 8;
 			this->label7->Text = L"email";
 			this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -375,58 +399,65 @@ namespace WorkSearch {
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label8->Location = System::Drawing::Point(26, 280);
+			this->label8->Location = System::Drawing::Point(38, 434);
+			this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label8->Name = L"label8";
-			this->label8->Size = System::Drawing::Size(123, 40);
+			this->label8->Size = System::Drawing::Size(185, 62);
 			this->label8->TabIndex = 9;
 			this->label8->Text = L"Телефон";
 			this->label8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// vacancyTextBox
 			// 
-			this->vacancyTextBox->Location = System::Drawing::Point(155, 83);
+			this->vacancyTextBox->Location = System::Drawing::Point(231, 129);
+			this->vacancyTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->vacancyTextBox->Name = L"vacancyTextBox";
-			this->vacancyTextBox->Size = System::Drawing::Size(223, 34);
+			this->vacancyTextBox->Size = System::Drawing::Size(332, 50);
 			this->vacancyTextBox->TabIndex = 2;
 			this->vacancyTextBox->Text = L"";
 			// 
 			// salaryTextBox
 			// 
-			this->salaryTextBox->Location = System::Drawing::Point(155, 123);
+			this->salaryTextBox->Location = System::Drawing::Point(231, 191);
+			this->salaryTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->salaryTextBox->Name = L"salaryTextBox";
-			this->salaryTextBox->Size = System::Drawing::Size(223, 34);
+			this->salaryTextBox->Size = System::Drawing::Size(332, 50);
 			this->salaryTextBox->TabIndex = 11;
 			this->salaryTextBox->Text = L"";
 			// 
 			// sceduleTextBox
 			// 
-			this->sceduleTextBox->Location = System::Drawing::Point(155, 163);
+			this->sceduleTextBox->Location = System::Drawing::Point(231, 253);
+			this->sceduleTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->sceduleTextBox->Name = L"sceduleTextBox";
-			this->sceduleTextBox->Size = System::Drawing::Size(223, 34);
+			this->sceduleTextBox->Size = System::Drawing::Size(332, 50);
 			this->sceduleTextBox->TabIndex = 12;
 			this->sceduleTextBox->Text = L"";
 			// 
 			// trialPerTextBox
 			// 
-			this->trialPerTextBox->Location = System::Drawing::Point(155, 203);
+			this->trialPerTextBox->Location = System::Drawing::Point(231, 315);
+			this->trialPerTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->trialPerTextBox->Name = L"trialPerTextBox";
-			this->trialPerTextBox->Size = System::Drawing::Size(223, 34);
+			this->trialPerTextBox->Size = System::Drawing::Size(332, 50);
 			this->trialPerTextBox->TabIndex = 13;
 			this->trialPerTextBox->Text = L"";
 			// 
 			// emailTextBox
 			// 
-			this->emailTextBox->Location = System::Drawing::Point(155, 243);
+			this->emailTextBox->Location = System::Drawing::Point(231, 377);
+			this->emailTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->emailTextBox->Name = L"emailTextBox";
-			this->emailTextBox->Size = System::Drawing::Size(223, 34);
+			this->emailTextBox->Size = System::Drawing::Size(332, 50);
 			this->emailTextBox->TabIndex = 14;
 			this->emailTextBox->Text = L"";
 			// 
 			// reqTextBox
 			// 
-			this->reqTextBox->Location = System::Drawing::Point(155, 323);
+			this->reqTextBox->Location = System::Drawing::Point(231, 501);
+			this->reqTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->reqTextBox->Name = L"reqTextBox";
-			this->reqTextBox->Size = System::Drawing::Size(223, 34);
+			this->reqTextBox->Size = System::Drawing::Size(332, 50);
 			this->reqTextBox->TabIndex = 16;
 			this->reqTextBox->Text = L"";
 			// 
@@ -434,9 +465,10 @@ namespace WorkSearch {
 			// 
 			this->selectLogoButon->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
-			this->selectLogoButon->Location = System::Drawing::Point(155, 43);
+			this->selectLogoButon->Location = System::Drawing::Point(231, 67);
+			this->selectLogoButon->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->selectLogoButon->Name = L"selectLogoButon";
-			this->selectLogoButon->Size = System::Drawing::Size(223, 34);
+			this->selectLogoButon->Size = System::Drawing::Size(334, 52);
 			this->selectLogoButon->TabIndex = 17;
 			this->selectLogoButon->Text = L"Выбрать файл";
 			this->selectLogoButon->UseVisualStyleBackColor = true;
@@ -451,9 +483,10 @@ namespace WorkSearch {
 			this->reqTipLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->reqTipLabel->ForeColor = System::Drawing::SystemColors::HotTrack;
-			this->reqTipLabel->Location = System::Drawing::Point(3, 320);
+			this->reqTipLabel->Location = System::Drawing::Point(4, 496);
+			this->reqTipLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->reqTipLabel->Name = L"reqTipLabel";
-			this->reqTipLabel->Size = System::Drawing::Size(17, 46);
+			this->reqTipLabel->Size = System::Drawing::Size(26, 67);
 			this->reqTipLabel->TabIndex = 18;
 			this->reqTipLabel->Text = L"\?";
 			this->reqTipLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -467,18 +500,20 @@ namespace WorkSearch {
 			this->SceduleTipLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
 			this->SceduleTipLabel->ForeColor = System::Drawing::SystemColors::HotTrack;
-			this->SceduleTipLabel->Location = System::Drawing::Point(3, 160);
+			this->SceduleTipLabel->Location = System::Drawing::Point(4, 248);
+			this->SceduleTipLabel->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->SceduleTipLabel->Name = L"SceduleTipLabel";
-			this->SceduleTipLabel->Size = System::Drawing::Size(17, 40);
+			this->SceduleTipLabel->Size = System::Drawing::Size(26, 62);
 			this->SceduleTipLabel->TabIndex = 20;
 			this->SceduleTipLabel->Text = L"\?";
 			this->SceduleTipLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// phoneNumberTextBox
 			// 
-			this->phoneNumberTextBox->Location = System::Drawing::Point(155, 283);
+			this->phoneNumberTextBox->Location = System::Drawing::Point(231, 439);
+			this->phoneNumberTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->phoneNumberTextBox->Name = L"phoneNumberTextBox";
-			this->phoneNumberTextBox->Size = System::Drawing::Size(223, 34);
+			this->phoneNumberTextBox->Size = System::Drawing::Size(332, 50);
 			this->phoneNumberTextBox->TabIndex = 15;
 			this->phoneNumberTextBox->Text = L"";
 			// 
@@ -487,9 +522,10 @@ namespace WorkSearch {
 			this->label10->AutoSize = true;
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label10->Location = System::Drawing::Point(341, 12);
+			this->label10->Location = System::Drawing::Point(512, 18);
+			this->label10->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(298, 40);
+			this->label10->Size = System::Drawing::Size(444, 58);
 			this->label10->TabIndex = 7;
 			this->label10->Text = L"Для добавления вакансии\nзаполните все необходимые поля";
 			// 
@@ -497,9 +533,10 @@ namespace WorkSearch {
 			// 
 			this->addVacancyButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addVacancyButton->Location = System::Drawing::Point(471, 458);
+			this->addVacancyButton->Location = System::Drawing::Point(720, 781);
+			this->addVacancyButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->addVacancyButton->Name = L"addVacancyButton";
-			this->addVacancyButton->Size = System::Drawing::Size(223, 36);
+			this->addVacancyButton->Size = System::Drawing::Size(334, 55);
 			this->addVacancyButton->TabIndex = 8;
 			this->addVacancyButton->Text = L"Добавить вакансию";
 			this->addVacancyButton->UseVisualStyleBackColor = true;
@@ -510,17 +547,19 @@ namespace WorkSearch {
 			this->label14->AutoSize = true;
 			this->label14->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->label14->Location = System::Drawing::Point(8, 136);
+			this->label14->Location = System::Drawing::Point(12, 209);
+			this->label14->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label14->Name = L"label14";
-			this->label14->Size = System::Drawing::Size(248, 40);
+			this->label14->Size = System::Drawing::Size(355, 58);
 			this->label14->TabIndex = 9;
 			this->label14->Text = L"Для удаления вакансии\nвведите ее идентификатор";
 			// 
 			// vacIdTextBox
 			// 
-			this->vacIdTextBox->Location = System::Drawing::Point(12, 202);
+			this->vacIdTextBox->Location = System::Drawing::Point(18, 311);
+			this->vacIdTextBox->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->vacIdTextBox->Name = L"vacIdTextBox";
-			this->vacIdTextBox->Size = System::Drawing::Size(202, 34);
+			this->vacIdTextBox->Size = System::Drawing::Size(301, 50);
 			this->vacIdTextBox->TabIndex = 21;
 			this->vacIdTextBox->Text = L"";
 			// 
@@ -528,42 +567,64 @@ namespace WorkSearch {
 			// 
 			this->deleteVacancyButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->deleteVacancyButton->Location = System::Drawing::Point(12, 263);
+			this->deleteVacancyButton->Location = System::Drawing::Point(18, 405);
+			this->deleteVacancyButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->deleteVacancyButton->Name = L"deleteVacancyButton";
-			this->deleteVacancyButton->Size = System::Drawing::Size(202, 36);
+			this->deleteVacancyButton->Size = System::Drawing::Size(303, 55);
 			this->deleteVacancyButton->TabIndex = 22;
 			this->deleteVacancyButton->Text = L"Удалить вакансию";
 			this->deleteVacancyButton->UseVisualStyleBackColor = true;
 			this->deleteVacancyButton->Click += gcnew System::EventHandler(this, &EmployerWindow::deleteVacancyButton_Click);
 			// 
+			// chooseActionTheckBox
+			// 
+			this->chooseActionTheckBox->AutoSize = true;
+			this->chooseActionTheckBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(204)));
+			this->chooseActionTheckBox->Location = System::Drawing::Point(491, 105);
+			this->chooseActionTheckBox->Name = L"chooseActionTheckBox";
+			this->chooseActionTheckBox->Size = System::Drawing::Size(180, 29);
+			this->chooseActionTheckBox->TabIndex = 23;
+			this->chooseActionTheckBox->Text = L"Редактировать";
+			this->chooseActionTheckBox->UseVisualStyleBackColor = true;
+			this->chooseActionTheckBox->CheckedChanged += gcnew System::EventHandler(this, &EmployerWindow::chooseActionTheckBox_CheckedChanged);
+			// 
 			// label11
 			// 
 			this->label11->AutoSize = true;
-			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->label11->Location = System::Drawing::Point(8, 387);
+			this->label11->Location = System::Drawing::Point(718, 95);
 			this->label11->Name = L"label11";
-			this->label11->Size = System::Drawing::Size(272, 40);
-			this->label11->TabIndex = 23;
-			this->label11->Text = L"Для редактирования вакансии\nвоспользуйтесь:";
+			this->label11->Size = System::Drawing::Size(290, 40);
+			this->label11->TabIndex = 24;
+			this->label11->Text = L"Введите идентификатор вакансии,\nкоторую необходимо редактировать";
 			// 
-			// CorrectExistvacButton
+			// correctVacIdTextBox
 			// 
-			this->CorrectExistvacButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->CorrectExistvacButton->Location = System::Drawing::Point(12, 434);
-			this->CorrectExistvacButton->Name = L"CorrectExistvacButton";
-			this->CorrectExistvacButton->Size = System::Drawing::Size(202, 60);
-			this->CorrectExistvacButton->TabIndex = 24;
-			this->CorrectExistvacButton->Text = L"Редактировать вакансию";
-			this->CorrectExistvacButton->UseVisualStyleBackColor = true;
-			this->CorrectExistvacButton->Click += gcnew System::EventHandler(this, &EmployerWindow::CorrectExistvacButton_Click);
+			this->correctVacIdTextBox->Location = System::Drawing::Point(722, 139);
+			this->correctVacIdTextBox->Name = L"correctVacIdTextBox";
+			this->correctVacIdTextBox->Size = System::Drawing::Size(208, 26);
+			this->correctVacIdTextBox->TabIndex = 25;
+			this->correctVacIdTextBox->TextChanged += gcnew System::EventHandler(this, &EmployerWindow::correctVacIdTextBox_TextChanged);
+			// 
+			// startCorrectButton
+			// 
+			this->startCorrectButton->Location = System::Drawing::Point(955, 138);
+			this->startCorrectButton->Name = L"startCorrectButton";
+			this->startCorrectButton->Size = System::Drawing::Size(194, 36);
+			this->startCorrectButton->TabIndex = 26;
+			this->startCorrectButton->Text = L"Редактировать";
+			this->startCorrectButton->UseVisualStyleBackColor = true;
+			this->startCorrectButton->Click += gcnew System::EventHandler(this, &EmployerWindow::startCorrectButton_Click);
 			// 
 			// EmployerWindow
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(793, 534);
+			this->ClientSize = System::Drawing::Size(1186, 891);
+			this->Controls->Add(this->startCorrectButton);
+			this->Controls->Add(this->correctVacIdTextBox);
+			this->Controls->Add(this->label11);
+			this->Controls->Add(this->chooseActionTheckBox);
 			this->Controls->Add(this->deleteVacancyButton);
 			this->Controls->Add(this->vacIdTextBox);
 			this->Controls->Add(this->label14);
@@ -572,8 +633,7 @@ namespace WorkSearch {
 			this->Controls->Add(this->tableLayoutPanel1);
 			this->Controls->Add(this->helpLinkLabel);
 			this->Controls->Add(this->LogoPictureBox);
-			this->Controls->Add(this->CorrectExistvacButton);
-			this->Controls->Add(this->label11);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"EmployerWindow";
 			this->Text = L"EmployerWindow";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &EmployerWindow::setting_FormClosing);
@@ -620,7 +680,7 @@ private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::
 }
 
 private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	String^ helpMessage = "Для удаления вакансии введите ее идентификатор.\"\nДля создания новой необходимо заполнить все указанные поля\nЗа дополнительной информацией воспользуйтесь подсказками напротив соответсвующий полей.";
+	String^ helpMessage = "Для удаления вакансии введите ее идентификатор.\"\nДля создания новой необходимо заполнить все указанные поля\nПри необходимости редактировать вакансию, быберете соответсвующий режим.\nЗа дополнительной информацией воспользуйтесь подсказками напротив соответсвующий полей.";
 	MessageBox::MessageBox::Show(helpMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 
@@ -640,6 +700,7 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 		   ofd->ShowDialog();
 		   logoFile = gcnew String(ofd->FileName->ToCharArray());
 		   choosedFile = true;
+		   if (chooseActionTheckBox->Checked) { fileChanged = true; }
        }
 
 	   private: bool createVacancy(Vacancy* newVacancy) {
@@ -662,10 +723,12 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 			   MessageBox::MessageBox::Show(gcnew String(errorMessage.c_str()), L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			   return false;
 		   }
-
-		   std::ifstream src(msclr::interop::marshal_as<std::string>(logoFile->ToString()), std::ios::binary);
-		   std::ofstream dest(logo, std::ios::binary);
-		   dest << src.rdbuf();
+		   if (!chooseActionTheckBox->Checked || fileChanged) {
+			   std::ifstream src(msclr::interop::marshal_as<std::string>(logoFile->ToString()), std::ios::binary);
+			   std::ofstream dest(logo, std::ios::binary);
+			   dest << src.rdbuf();
+		   }
+		   
 		    
 		   newVacancy->company = company;
 		   newVacancy->vacancyName = vacancy;
@@ -675,31 +738,123 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 		   newVacancy->phoneNumber = phoneNumber;
 		   newVacancy->email = email;
 		   newVacancy->candidateRequirement = validator.split(candidateReq, ", ");
-		   newVacancy->companyLogo = logo;
+		   if (!chooseActionTheckBox->Checked || fileChanged){ newVacancy->companyLogo = logo; }
 		   return true;
 	   }
 
 private: System::Void addVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	
 	if (anyEmptyFields()) {
 		String^ errorMessage = "Заполните все поля!";
 		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
 		return; 
 	}
-	Vacancy* newVacancy = &Vacancy(vacancies.getNextId());
+	if (chooseActionTheckBox->Checked) {
+		int idToCorrect = Convert::ToInt32(this->correctVacIdTextBox->Text);
+		Vacancy* newVacancy = vacancies.findById(idToCorrect);
+		if(createVacancy(newVacancy)) {
+			vacancies.updateVacacncy(idToCorrect, *newVacancy);
+			String^ Message = "Вакансия была успешно обновлена.";
+			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+	}
+	else {
+		Vacancy* newVacancy = &Vacancy(vacancies.getNextId());
+		if (createVacancy(newVacancy)) {
+			int newId = vacancies.addVacancy(*newVacancy);
+			String^ Message = "Вакансия была успешно создана.\nИдентификатор вакансии: " + newId.ToString();
+			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+	}
+	for (int i = 0; i != inputFields.Count; i++) {
+		inputFields[i]->Text = "";
+	}
+	vacancies.savedChanges = false;
+	/*int id = (chooseActionTheckBox->Checked) ? Convert::ToInt32(this->correctVacIdTextBox->Text) : vacancies.getNextId();
+	Vacancy* newVacancy = &Vacancy(id);
 	if (createVacancy(newVacancy)) {
-		int newId = vacancies.addVacancy(*newVacancy);
-		String^ Message = "Вакансия была успешно создана.\nИдентификатор вакансии: " + newId.ToString();
-		MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		if (chooseActionTheckBox->Checked) {
+			int idToCorrect = Convert::ToInt32(this->correctVacIdTextBox->Text);
+			vacancies.updateVacacncy(idToCorrect, *newVacancy);
+			String^ Message = "Вакансия была успешно обновлена.";
+			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		else {
+			
+			int newId = vacancies.addVacancy(*newVacancy);
+			String^ Message = "Вакансия была успешно создана.\nИдентификатор вакансии: " + newId.ToString();
+			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
 		for (int i = 0; i != inputFields.Count; i++) {
 			inputFields[i]->Text = "";
 		}
 		vacancies.savedChanges = false;
-	}
+	}*/
 }
 
 private: System::Void CorrectExistvacButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	CorrectVacancyWindow^ form = gcnew CorrectVacancyWindow();
-	form->ShowDialog();
+	/*CorrectVacancyWindow^ form = gcnew CorrectVacancyWindow();
+	form->ShowDialog();*/
+	return;
+}
+private: System::Void chooseActionTheckBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	if (chooseActionTheckBox->Checked == true) {
+		label11->Visible = true;
+		correctVacIdTextBox->Visible = true;
+		startCorrectButton->Visible = true;
+		addVacancyButton->Text = "Редактировать вакансию";
+	}
+	else {
+		label11->Visible = false;
+		correctVacIdTextBox->Visible = false;
+		startCorrectButton->Visible = false;
+		addVacancyButton->Text = "Добавить вакансию";
+		correctVacIdTextBox->Text = "";
+	}
+	for (int i = 0; i != inputFields.Count; i++) {
+		inputFields[i]->Text = "";
+	}
+}
+private: System::Void correctVacIdTextBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	return;
+}
+private: System::Void startCorrectButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	bool clear = false;
+	if (correctVacIdTextBox->Text == "") {
+		String^ helpMessage = "Введите идентификатор вакансии";
+		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		clear = true;
+	}
+	if (!InputDataValidator::isInt(correctVacIdTextBox->Text)) {
+		String^ helpMessage = "Идентификатор вакансии - целое положительное число";
+		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		vacIdTextBox->Text = "Введите целочисленный идентификатор вакансии";
+		clear = true;
+	}
+	int idToCorrect = Convert::ToInt32(this->correctVacIdTextBox->Text);
+	if (!vacancies.containsId(idToCorrect)) {
+		String^ helpMessage = "Вакансия с таким идентификатором не содержится в базе";
+		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		vacIdTextBox->Text = "";
+		clear = true;
+	}
+	if (clear) {
+		for (int i = 0; i != inputFields.Count; i++) {
+			inputFields[i]->Text = "";
+		}
+		return;
+	}
+	Vacancy* vacToCorrect = vacancies.findById(idToCorrect);
+	companyTextBox->Text = gcnew String(vacToCorrect->company.c_str());
+	vacancyTextBox->Text = gcnew String(vacToCorrect->vacancyName.c_str());
+	salaryTextBox->Text = gcnew String(vacToCorrect->salary.ToString());
+	sceduleTextBox->Text = gcnew String(vacToCorrect->workingSchedule.c_str());
+	trialPerTextBox->Text = gcnew String(vacToCorrect->trialPeriod.ToString());
+	emailTextBox->Text = gcnew String(vacToCorrect->email.c_str());
+	phoneNumberTextBox->Text = gcnew String(vacToCorrect->phoneNumber.c_str());
+	reqTextBox->Text = gcnew String(InputDataValidator::join(vacToCorrect->candidateRequirement, ", ").c_str());
+	logoFile = gcnew String(vacToCorrect->companyLogo.c_str());
+	choosedFile = true;
 }
 };
 }

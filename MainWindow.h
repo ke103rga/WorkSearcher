@@ -248,7 +248,6 @@ namespace WorkSearch {
 private: System::Void candidateButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	CandidateWindow^ form = gcnew CandidateWindow();
 	form->ShowDialog();
-	this->Visible = false;
 }
 
 private: System::Void employerButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -268,8 +267,6 @@ private: System::Void authorLinkedLabel_LinkClicked(System::Object^ sender, Syst
 
 private: System::Void MainWindow_Load(System::Object^ sender, System::EventArgs^ e) {
 	return;
-	// Collecting the database
-	//vacancies.readFromJson(DB_FILE_PATH);
 }
 };
 }

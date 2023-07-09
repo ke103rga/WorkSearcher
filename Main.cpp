@@ -1,5 +1,5 @@
 #include <iostream>
-#include "EmployerWindow.h"
+#include "MainWindow.h"
 #include "Vacancies.h"
 
 using namespace std;
@@ -15,7 +15,7 @@ int main()
     // Running the main window
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    EmployerWindow form;
+    MainWindow form;
     Application::Run(% form);
 
     char c;

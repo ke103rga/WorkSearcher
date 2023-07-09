@@ -450,8 +450,6 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 		MessageBox::MessageBox::Show(sadMessage, L"Не повезло", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		return;
 	}
-	/*std::vector<int> vacIds = vector<int>();
-	vacIds = { 1, 2 };*/
 
 	for (int i = 0; i != vacIds.size(); i++) {
 	    Vacancy* vac = vacancies.findById(vacIds[i]);
