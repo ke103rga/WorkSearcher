@@ -1,16 +1,32 @@
 #include <unordered_map>
 #include <unordered_set>
 #include "Vacancy.h"
+
 using namespace std;
+
+#pragma once
+class Pair {
+public:
+	Pair(int key, Vacancy value) : key(key), value(value) {}
+
+	int key;
+	Vacancy value;
+};
 
 
 #pragma once
 class Vacancies {
-	unordered_map<int, Vacancy> vacancies;
+	vector<vector<Pair>> vacancies;
+	int capacity;
 	int nextId;
+
 public:
-	Vacancies();
+	Vacancies(int capacity);
+
 	bool savedChanges = true;
+
+	int hashFunction(int key);
+	void Add(int key, Vacancy value);
 
 	Vacancy* findById(int id);//Поиск по идентификатору
 	vector<int> findByParams(string vacancyName, int minSalary, int maxSalary, unordered_set<string> scedule);//Поиск по одному или нескольким параметрам

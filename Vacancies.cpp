@@ -13,9 +13,9 @@
 using namespace std;
 
 #pragma once
-Vacancies::Vacancies() {
-	vacancies = unordered_map<int, Vacancy>();
-};
+Vacancies::Vacancies(int capacity) : capacity(capacity) {
+	vacancies.resize(capacity);
+} 
 
 #pragma once
 bool Vacancies::readFromTXT(string filePath) { 
@@ -49,7 +49,8 @@ bool Vacancies::readFromTXT(string filePath) {
 				salary, workingSchedule, trialPeriod, phoneNumber,
 				email, candidateRequirement);
 
-			vacancies[id] = newVacancy;
+			//vacancies[id] = newVacancy;
+			Add(id, newVacancy);
 		}
 	}
 	in.close();
@@ -59,25 +60,49 @@ bool Vacancies::readFromTXT(string filePath) {
 	return true;
 }
 
+#pragma once 
+int Vacancies::hashFunction(int key) {
+	return key % capacity;
+}
+
+#pragma once
+void Vacancies::Add(int key, Vacancy value) {
+	int index = hashFunction(key);
+	Pair pair(key, value);
+
+	vector<Pair>& curBucket = vacancies[index];
+	for (int i = 0; i < curBucket.size(); i++) {
+		if (curBucket[i].key == key) {
+			curBucket[i].value = value;
+			return;
+		}
+	}
+	curBucket.push_back(pair);
+}
+
 #pragma once
 bool Vacancies::saveChanges(string filePath) {
 
 	string txt = msclr::interop::marshal_as<std::string>(nextId.ToString()) + "\n";
-	for (std::pair<int, Vacancy> element : vacancies) {
-		int vacId = element.first;
-		Vacancy curVac = element.second;
+	for (int i = 0; i < capacity; i++) {
+		vector<Pair>& curBucket = vacancies[i];
+		if (curBucket.empty()) { continue; }
+		for (int j = 0; j < curBucket.size(); j++) {
+			int vacId = curBucket[j].key;
+			Vacancy curVac = curBucket[j].value;
 
-		txt = txt +
-			msclr::interop::marshal_as<std::string>(curVac.id.ToString()) + ";" +
-			curVac.company + ";" +
-			curVac.companyLogo + ";" +
-			curVac.vacancyName + ";" +
-			msclr::interop::marshal_as<std::string>(curVac.salary.ToString()) + ";" +
-			curVac.workingSchedule + ";" +
-			msclr::interop::marshal_as<std::string>(curVac.trialPeriod.ToString()) + ";" +
-			curVac.phoneNumber + ";" +
-			curVac.email + ";" +
-			InputDataValidator::join(curVac.candidateRequirement, ", ") + "\n";
+			txt = txt +
+				msclr::interop::marshal_as<std::string>(curVac.id.ToString()) + ";" +
+				curVac.company + ";" +
+				curVac.companyLogo + ";" +
+				curVac.vacancyName + ";" +
+				msclr::interop::marshal_as<std::string>(curVac.salary.ToString()) + ";" +
+				curVac.workingSchedule + ";" +
+				msclr::interop::marshal_as<std::string>(curVac.trialPeriod.ToString()) + ";" +
+				curVac.phoneNumber + ";" +
+				curVac.email + ";" +
+				InputDataValidator::join(curVac.candidateRequirement, ", ") + "\n";
+		}
 	}
 
 	std::ofstream out;
@@ -94,43 +119,76 @@ bool Vacancies::saveChanges(string filePath) {
 
 #pragma once
 bool Vacancies::deleteVacancy(int id) { 
-	if (vacancies.find(id) != vacancies.end()) {
-		vacancies.erase(id);
-		return true;
+	int index = hashFunction(id);
+	vector<Pair>& curBucket = vacancies[index];
+	for (int i = 0; i < curBucket.size(); i++) {
+		if (curBucket[i].key == id) {
+			curBucket.erase(curBucket.begin() + i);
+			return true;
+		}
 	}
 	return false;
 }
 
 #pragma once
 int Vacancies::addVacancy(Vacancy newVacancy) { 
-	vacancies[newVacancy.id] = newVacancy; 
+	Add(newVacancy.id, newVacancy);
 	return nextId++;
 }
 
 vector<int> Vacancies::findByParams(string vacancyName, int minSalary, int maxSalary, unordered_set<string> scedule) {
 	vector<int> ids;
-	for (std::pair<int, Vacancy> element : vacancies) {
-		int vacId = element.first;
-		Vacancy curVac = element.second;
+	for (int i = 0; i < capacity; i++) {
+		vector<Pair>& curBucket = vacancies[i];
+		if (curBucket.empty()) { continue; }
+		for (int j = 0; j < curBucket.size(); j++) {
+			int vacId = curBucket[j].key;
+			Vacancy curVac = curBucket[j].value;
 
-		std::string lowercurVacName = curVac.vacancyName;
-		std::transform(lowercurVacName.begin(), lowercurVacName.end(), lowercurVacName.begin(),
-			[](unsigned char c) { return std::tolower(c); });
-		std::string searchVacName = vacancyName;
-		std::transform(searchVacName.begin(), searchVacName.end(), searchVacName.begin(),
-			[](unsigned char c) { return std::tolower(c); });
+			std::string lowercurVacName = curVac.vacancyName;
+			std::transform(lowercurVacName.begin(), lowercurVacName.end(), lowercurVacName.begin(),
+				[](unsigned char c) { return std::tolower(c); });
+			std::string searchVacName = vacancyName;
+			std::transform(searchVacName.begin(), searchVacName.end(), searchVacName.begin(),
+				[](unsigned char c) { return std::tolower(c); });
 
-		if  (lowercurVacName.find(searchVacName) != std::string::npos  && (curVac.salary >= minSalary )
-			/*&& (curVac.salary <= maxSalary)*/  && scedule.find(curVac.workingSchedule) != scedule.end()) {
-			ids.push_back(vacId);
+			if (lowercurVacName.find(searchVacName) != std::string::npos && (curVac.salary >= minSalary)
+				/*&& (curVac.salary <= maxSalary)*/ && scedule.find(curVac.workingSchedule) != scedule.end()) {
+				ids.push_back(vacId);
+			}
 		}
 	}
+	//for (std::pair<int, Vacancy> element : vacancies) {
+	//	int vacId = element.first;
+	//	Vacancy curVac = element.second;
+
+	//	std::string lowercurVacName = curVac.vacancyName;
+	//	std::transform(lowercurVacName.begin(), lowercurVacName.end(), lowercurVacName.begin(),
+	//		[](unsigned char c) { return std::tolower(c); });
+	//	std::string searchVacName = vacancyName;
+	//	std::transform(searchVacName.begin(), searchVacName.end(), searchVacName.begin(),
+	//		[](unsigned char c) { return std::tolower(c); });
+
+	//	if  (lowercurVacName.find(searchVacName) != std::string::npos  && (curVac.salary >= minSalary )
+	//		/*&& (curVac.salary <= maxSalary)*/  && scedule.find(curVac.workingSchedule) != scedule.end()) {
+	//		ids.push_back(vacId);
+	//	}
+	//}
 	return ids;
 }
 
 Vacancy* Vacancies::findById(int id) {
-	if (vacancies.find(id) != vacancies.end()) {
-		return &vacancies[id];
+	int index = hashFunction(id);
+	vector<Pair>& curBucket = vacancies[index];
+	if (curBucket.empty()) {
+		throw std::invalid_argument("Key error");
+	}
+	else {
+		for (int i = 0; i < curBucket.size(); i++) {
+			if (curBucket[i].key == id) {
+				return &curBucket[i].value;
+			}
+		}
 	}
 	Vacancy* emptyVac = 0;
 	return emptyVac;
@@ -138,12 +196,21 @@ Vacancy* Vacancies::findById(int id) {
 
 int Vacancies::getNextId() { return nextId;  }
 
-bool Vacancies::containsId(int id) { return vacancies.find(id) != vacancies.end(); }
-
-void Vacancies::updateVacacncy(int id, Vacancy updatedVacancy) {
-	vacancies[id] = updatedVacancy;
+bool Vacancies::containsId(int id) {
+	int index = hashFunction(id);
+	vector<Pair>& curBucket = vacancies[index];
+	for (int i = 0; i < curBucket.size(); i++) {
+		if (curBucket[i].key == id) {
+			return true;
+		}
+	}
+	return false;
 }
 
-Vacancies vacancies = Vacancies();
+void Vacancies::updateVacacncy(int id, Vacancy updatedVacancy) {
+	Add(updatedVacancy.id, updatedVacancy);
+}
+
+Vacancies vacancies = Vacancies(500);
 string DB_FILE_PATH = "vacanciesData.txt";
 

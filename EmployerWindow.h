@@ -756,6 +756,10 @@ private: System::Void addVacancyButton_Click(System::Object^ sender, System::Eve
 			vacancies.updateVacacncy(idToCorrect, *newVacancy);
 			String^ Message = "Вакансия была успешно обновлена.";
 			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			for (int i = 0; i != inputFields.Count; i++) {
+				inputFields[i]->Text = "";
+			}
+			vacancies.savedChanges = false;
 		}
 	}
 	else {
@@ -764,32 +768,12 @@ private: System::Void addVacancyButton_Click(System::Object^ sender, System::Eve
 			int newId = vacancies.addVacancy(*newVacancy);
 			String^ Message = "Вакансия была успешно создана.\nИдентификатор вакансии: " + newId.ToString();
 			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			for (int i = 0; i != inputFields.Count; i++) {
+				inputFields[i]->Text = "";
+			}
+			vacancies.savedChanges = false;
 		}
 	}
-	for (int i = 0; i != inputFields.Count; i++) {
-		inputFields[i]->Text = "";
-	}
-	vacancies.savedChanges = false;
-	/*int id = (chooseActionTheckBox->Checked) ? Convert::ToInt32(this->correctVacIdTextBox->Text) : vacancies.getNextId();
-	Vacancy* newVacancy = &Vacancy(id);
-	if (createVacancy(newVacancy)) {
-		if (chooseActionTheckBox->Checked) {
-			int idToCorrect = Convert::ToInt32(this->correctVacIdTextBox->Text);
-			vacancies.updateVacacncy(idToCorrect, *newVacancy);
-			String^ Message = "Вакансия была успешно обновлена.";
-			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		}
-		else {
-			
-			int newId = vacancies.addVacancy(*newVacancy);
-			String^ Message = "Вакансия была успешно создана.\nИдентификатор вакансии: " + newId.ToString();
-			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
-		}
-		for (int i = 0; i != inputFields.Count; i++) {
-			inputFields[i]->Text = "";
-		}
-		vacancies.savedChanges = false;
-	}*/
 }
 
 private: System::Void CorrectExistvacButton_Click(System::Object^ sender, System::EventArgs^ e) {
