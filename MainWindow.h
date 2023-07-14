@@ -246,22 +246,27 @@ namespace WorkSearch {
 		}
 
 private: System::Void candidateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	//Open form for candidates
 	CandidateWindow^ form = gcnew CandidateWindow();
 	form->ShowDialog();
 }
 
 private: System::Void employerButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	//Open form for employer
 	EmployerWindow^ form = gcnew EmployerWindow();
 	form->ShowDialog();
 }
 
 private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	//Showing the dialog window which contains instractions for user
 	String^ helpMessage = "Для поиска работы воспользуйтесь разделом \"Для соискателей\"\nДля поиска сотрудников воспользуйтесь разделом \"Для работодателей\"\n";
 	MessageBox::MessageBox::Show(helpMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 
 private: System::Void authorLinkedLabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	String^ authorMessage = "Автор программы: Разуев Георгий\nGitHub: https://github.com/ke103rga";
+	//Showing the dialog window which contains information about author
+	String^ authorMessage = "Автор программы: Ра
+		зуев Георгий\nGitHub: https://github.com/ke103rga";
 	MessageBox::MessageBox::Show(authorMessage, L"Создатель", MessageBoxButtons::OK, MessageBoxIcon::Information);
 }
 

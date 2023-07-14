@@ -40,7 +40,7 @@ public:
 	int getNextId();
 	bool containsId(int id);
 
-	void updateVacacncy(int id, Vacancy updatedVacancy);
+	void updateVacancy(int id, Vacancy updatedVacancy);
 };
 
 #pragma once

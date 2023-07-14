@@ -1,8 +1,9 @@
 #include <msclr\marshal_cppstd.h>
 #include <unordered_set>
 #include <vector>
-#include <format>
 #include <iostream>
+#include <fstream>
+#include <cmath>
 #include "Vacancies.h"
 #include "InputDataValidator.h"
 
@@ -406,7 +407,7 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 		MessageBox::MessageBox::Show(errorMessage, L"У тебя какие-то проблемы?", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 	int minSalary = 0;
-	int maxSalary = 2^31 - 1;
+	int maxSalary = pow(2, 31) - 1;
 
 	if (minSalaryTextBox->Text != "") {
 		if (!InputDataValidator::isInt(minSalaryTextBox->Text)) {
@@ -456,8 +457,9 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 		if (!vac) { continue;  }
 	    auto arr = gcnew cli::array<Object^>(10);
 
+		Bitmap^ logo;
+		String^ emptyLogo;
 	    string req = InputDataValidator::join(vac->candidateRequirement, ", ");
-	    Bitmap^ logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
 		string contacts = "Email: " + vac->email + "\nPhone number: " + vac->phoneNumber;
 
 	    arr[0] = gcnew String(vac->company.c_str());
@@ -467,7 +469,18 @@ private: System::Void searchButton_Click(System::Object^ sender, System::EventAr
 	    arr[4] = gcnew String(vac->trialPeriod.ToString());  
 	    arr[5] = gcnew String(contacts.c_str()); 
 	    arr[6] = gcnew String(req.c_str());
-	    arr[7] = logo;
+		try {
+			string filePath = vac->companyLogo.c_str();
+			std::ifstream in(filePath);
+			if (!in.good()) {
+				throw "Unexisting file";
+			}
+			logo = gcnew Bitmap(gcnew String(vac->companyLogo.c_str()));
+			arr[7] = logo;
+		}
+		catch (const char* error_message) { }
+		catch (int errorCode) { }
+	    
 		vacanciesGridView->Rows->Add(arr);
 	}
 }

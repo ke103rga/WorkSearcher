@@ -84,7 +84,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -115,7 +115,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies />
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
@@ -123,10 +123,8 @@
     <ClCompile Include="CandidateWindow.cpp" />
     <ClCompile Include="EmployerWindow.cpp" />
     <ClCompile Include="InputDataValidator.cpp" />
-    <ClCompile Include="json_train.cpp" />
     <ClCompile Include="MainWindow.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="saceFielTrain.cpp" />
     <ClCompile Include="txt_train.cpp" />
     <ClCompile Include="Vacancies.cpp" />
   </ItemGroup>

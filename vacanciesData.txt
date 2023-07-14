@@ -1,0 +1,301 @@
+301
+1;google;companyLogos\googleLogoFile.png;Data analyst;150000;5/2;15;89083488473;phqghumeay@mail.ru;stress-resistant, anannoying, communicative, stress-resistant, stress-resistant
+2;Tele2;companyLogos\Tele2LogoFile.png;game developer;150000;2/2;15;89278453513;lnlfdxfirc@mail.ru;smart, confident, confident, confident, brave
+4;google;companyLogos\googleLogoFile.png;frontend developer;550000;2/2;2;89985608519;nqduxwfnfo@mail.ru;funny, confident, attractive, confident, communicative
+5;microsoft;companyLogos\microsoftLogoFile.png;ml engineer;200000;посуточный;14;89102408739;zvsrtkjpre@mail.ru;brave, smart, cool, calm, smart
+6;Alpha bank;companyLogos\Alpha bankLogoFile.png;Data analyst;550000;2/2;20;89161505251;pggxrpnrvy@mail.ru;stress-resistant, brave, smart, confident, calm
+7;Tele2;companyLogos\Tele2LogoFile.png;data scientist;170000;5/2;28;89161676200;stmwcysyyc@mail.ru;cool, cool, cool, calm, smart
+8;2Gis;companyLogos\2GisLogoFile.png;backend developer;400000;5/2;24;89916639381;qpevikeffm@mail.ru;cool, anannoying, stress-resistant, communicative, calm
+9;amazon;companyLogos\amazonLogoFile.png;backend developer;100000;почасовой;17;89993744575;znimkkasvw@mail.ru;cool, funny, smart, brave, calm
+10;google;companyLogos\googleLogoFile.png;developer;170000;2/2;18;89399438961;srenzkycxf@mail.ru;funny, smart, attractive, funny, communicative
+11;MTS;companyLogos\MTSLogoFile.png;mobile developer;105000;2/2;23;89917839054;xtlsgypsfa@mail.ru;communicative, brave, calm, cool, cool
+12;yandex;companyLogos\yandexLogoFile.png;developer;150000;почасовой;19;89845700373;dpooefxzbc@mail.ru;attractive, confident, smart, calm, communicative
+13;2Gis;companyLogos\2GisLogoFile.png;game developer;400000;почасовой;29;89458559341;oejuvpvabo@mail.ru;funny, cool, anannoying, calm, cool
+14;MTS;companyLogos\MTSLogoFile.png;game developer;200000;посуточный;20;89517888509;ygpoeylfpb@mail.ru;communicative, anannoying, anannoying, brave, brave
+15;yandex;companyLogos\yandexLogoFile.png;game developer;550000;2/2;6;89637371068;npljvrvipy@mail.ru;cool, anannoying, communicative, communicative, confident
+16;Alpha bank;companyLogos\Alpha bankLogoFile.png;frontend developer;100000;2/2;29;89608883638;amyehwqnqr@mail.ru;anannoying, smart, calm, attractive, calm
+17;Avito;companyLogos\AvitoLogoFile.png;mobile developer;150000;2/2;19;89655065561;qpmxujjloo@mail.ru;attractive, brave, funny, brave, smart
+18;Avito;companyLogos\AvitoLogoFile.png;data scientist;300000;5/2;7;89547679871;vaowuxwhms@mail.ru;calm, anannoying, attractive, calm, calm
+19;google;companyLogos\googleLogoFile.png;backend developer;105000;почасовой;6;89519601256;ncbxcoksfz@mail.ru;smart, funny, stress-resistant, anannoying, funny
+20;amazon;companyLogos\amazonLogoFile.png;ml engineer;105000;посуточный;21;89246305193;kvatxdknly@mail.ru;stress-resistant, communicative, brave, confident, stress-resistant
+21;Tele2;companyLogos\Tele2LogoFile.png;frontend developer;170000;посуточный;8;89260954281;jyhfixjswn@mail.ru;calm, cool, funny, attractive, funny
+22;MTS;companyLogos\MTSLogoFile.png;game developer;200000;почасовой;0;89238632292;kkufnuxxzr@mail.ru;communicative, funny, brave, anannoying, smart
+23;Avito;companyLogos\AvitoLogoFile.png;Data analyst;150000;посуточный;9;89730431184;zbmnmgqook@mail.ru;cool, cool, attractive, attractive, smart
+24;microsoft;companyLogos\microsoftLogoFile.png;game developer;550000;посуточный;2;89980575899;etlyhnkoau@mail.ru;anannoying, communicative, smart, stress-resistant, anannoying
+25;google;companyLogos\googleLogoFile.png;game developer;550000;почасовой;20;89485759397;gzqrcddiut@mail.ru;anannoying, attractive, brave, communicative, stress-resistant
+26;Sberbank;companyLogos\SberbankLogoFile.png;ml engineer;200000;почасовой;23;89421796400;eiojwayyzp@mail.ru;communicative, communicative, funny, stress-resistant, brave
+27;MTS;companyLogos\MTSLogoFile.png;ml engineer;130000;2/2;23;89355371038;vscmpsajlf@mail.ru;attractive, smart, attractive, anannoying, cool
+28;Sberbank;companyLogos\SberbankLogoFile.png;backend developer;550000;5/2;8;89403294221;vgubfaaovl@mail.ru;calm, smart, funny, stress-resistant, cool
+29;Tele2;companyLogos\Tele2LogoFile.png;mobile developer;170000;2/2;15;89128180392;zylntrkdcp@mail.ru;cool, funny, stress-resistant, smart, funny
+30;Alpha bank;companyLogos\Alpha bankLogoFile.png;game developer;300000;5/2;15;89398408584;wsrtesjwhd@mail.ru;calm, cool, anannoying, smart, brave
+31;Tele2;companyLogos\Tele2LogoFile.png;ml engineer;130000;2/2;13;89118052746;izcobzcnfw@mail.ru;confident, attractive, anannoying, confident, cool
+32;Tele2;companyLogos\Tele2LogoFile.png;mobile developer;105000;посуточный;11;89941709112;lqijtvdwvx@mail.ru;stress-resistant, confident, confident, funny, attractive
+33;google;companyLogos\googleLogoFile.png;backend developer;130000;2/2;9;89850763957;hrcbldvgyl@mail.ru;attractive, anannoying, attractive, confident, cool
+34;MTS;companyLogos\MTSLogoFile.png;full-stack developer;550000;5/2;22;89525083094;wgbusbmbor@mail.ru;smart, funny, stress-resistant, funny, brave
+35;microsoft;companyLogos\microsoftLogoFile.png;frontend developer;105000;посуточный;25;89777984160;xtlhcsmpxo@mail.ru;calm, communicative, brave, funny, anannoying
+36;2Gis;companyLogos\2GisLogoFile.png;Data analyst;100000;2/2;9;89748726841;hgmgnkeufd@mail.ru;calm, smart, communicative, cool, cool
+37;google;companyLogos\googleLogoFile.png;full-stack developer;105000;посуточный;21;89021593755;xotogbgxpe@mail.ru;communicative, confident, cool, anannoying, confident
+38;Alpha bank;companyLogos\Alpha bankLogoFile.png;game developer;130000;посуточный;12;89442508804;yanfetcuke@mail.ru;confident, stress-resistant, cool, stress-resistant, attractive
+39;amazon;companyLogos\amazonLogoFile.png;frontend developer;170000;посуточный;15;89937998638;pzshkljugg@mail.ru;smart, anannoying, cool, confident, anannoying
+40;Sberbank;companyLogos\SberbankLogoFile.png;mobile developer;150000;почасовой;6;89910367030;gekjdqzjen@mail.ru;anannoying, anannoying, attractive, cool, calm
+41;MTS;companyLogos\MTSLogoFile.png;ml engineer;100000;почасовой;6;89629008062;pevqgxiepj@mail.ru;communicative, funny, communicative, communicative, smart
+42;2Gis;companyLogos\2GisLogoFile.png;data scientist;105000;5/2;0;89766355551;srdzjazujl@mail.ru;communicative, confident, anannoying, anannoying, cool
+43;google;companyLogos\googleLogoFile.png;Data analyst;200000;посуточный;11;89951924634;lchhbfqmki@mail.ru;anannoying, confident, confident, smart, brave
+44;MTS;companyLogos\MTSLogoFile.png;developer;150000;5/2;5;89825653886;mwzobiwybx@mail.ru;anannoying, communicative, cool, stress-resistant, funny
+45;Avito;companyLogos\AvitoLogoFile.png;product analyst;300000;посуточный;14;89506261162;duunfsksrs@mail.ru;cool, stress-resistant, communicative, funny, attractive
+46;Avito;companyLogos\AvitoLogoFile.png;frontend developer;170000;2/2;18;89203898913;rtekmqdcyz@mail.ru;calm, calm, calm, attractive, funny
+47;google;companyLogos\googleLogoFile.png;product analyst;100000;почасовой;20;89029295998;jeeuhmsrqc@mail.ru;attractive, stress-resistant, funny, confident, stress-resistant
+48;2Gis;companyLogos\2GisLogoFile.png;mobile developer;130000;почасовой;22;89790204581;ozijipfion@mail.ru;brave, funny, calm, brave, attractive
+49;microsoft;companyLogos\microsoftLogoFile.png;product analyst;300000;посуточный;13;89911802740;eeddpszrna@mail.ru;stress-resistant, calm, anannoying, brave, stress-resistant
+50;MTS;companyLogos\MTSLogoFile.png;mobile developer;100000;5/2;24;89754710671;vymmtatbdz@mail.ru;calm, confident, funny, brave, communicative
+51;Avito;companyLogos\AvitoLogoFile.png;product analyst;170000;2/2;25;89540928246;qsoemuvnpp@mail.ru;anannoying, cool, confident, funny, cool
+52;Avito;companyLogos\AvitoLogoFile.png;data scientist;200000;2/2;29;89192232962;psuacbazux@mail.ru;anannoying, calm, calm, communicative, stress-resistant
+53;microsoft;companyLogos\microsoftLogoFile.png;data scientist;150000;почасовой;12;89543239485;mhecthlegr@mail.ru;attractive, confident, confident, stress-resistant, calm
+54;microsoft;companyLogos\microsoftLogoFile.png;ml engineer;100000;5/2;13;89433112069;punkdmbppw@mail.ru;smart, anannoying, confident, brave, attractive
+55;2Gis;companyLogos\2GisLogoFile.png;game developer;300000;посуточный;16;89815638276;eqtgjoparm@mail.ru;attractive, confident, communicative, attractive, funny
+56;Avito;companyLogos\AvitoLogoFile.png;mobile developer;170000;5/2;30;89660582645;owzdqyoxyt@mail.ru;stress-resistant, smart, communicative, confident, attractive
+57;Avito;companyLogos\AvitoLogoFile.png;frontend developer;200000;посуточный;12;89699197513;jbbhawdydc@mail.ru;calm, attractive, anannoying, brave, cool
+58;amazon;companyLogos\amazonLogoFile.png;game developer;200000;2/2;2;89385444750;prjbxphooh@mail.ru;communicative, confident, cool, communicative, attractive
+59;amazon;companyLogos\amazonLogoFile.png;full-stack developer;105000;2/2;9;89292426419;pkwqyuhrqz@mail.ru;communicative, calm, stress-resistant, calm, confident
+60;amazon;companyLogos\amazonLogoFile.png;product analyst;100000;посуточный;25;89454338631;hnbnfuvqnq@mail.ru;cool, brave, communicative, smart, funny
+61;amazon;companyLogos\amazonLogoFile.png;full-stack developer;200000;почасовой;19;89633950731;qlrzjpxiog@mail.ru;cool, smart, calm, cool, stress-resistant
+62;Sberbank;companyLogos\SberbankLogoFile.png;game developer;200000;посуточный;11;89313059422;vliexdzuzo@mail.ru;confident, calm, cool, stress-resistant, communicative
+63;google;companyLogos\googleLogoFile.png;game developer;105000;2/2;8;89436196381;srkrusvojb@mail.ru;attractive, attractive, calm, brave, communicative
+64;amazon;companyLogos\amazonLogoFile.png;data scientist;130000;2/2;10;89957115541;rzmwzpowkj@mail.ru;anannoying, confident, funny, calm, stress-resistant
+65;Avito;companyLogos\AvitoLogoFile.png;full-stack developer;400000;2/2;11;89391289371;ilefraamdi@mail.ru;anannoying, confident, communicative, calm, brave
+66;Tele2;companyLogos\Tele2LogoFile.png;game developer;105000;посуточный;30;89137989345;gpnpuuhgxp@mail.ru;communicative, stress-resistant, brave, attractive, smart
+67;google;companyLogos\googleLogoFile.png;game developer;230000;5/2;24;89765551049;qnjwjmwaxx@mail.ru;confident, brave, funny, stress-resistant, funny
+68;MTS;companyLogos\MTSLogoFile.png;developer;200000;почасовой;27;89759052031;mnsnhhlqqr@mail.ru;attractive, anannoying, funny, attractive, funny
+69;Sberbank;companyLogos\SberbankLogoFile.png;Data analyst;105000;посуточный;15;89386842959;zudltfzotc@mail.ru;communicative, stress-resistant, funny, stress-resistant, calm
+70;microsoft;companyLogos\microsoftLogoFile.png;ml engineer;200000;посуточный;9;89144868882;jtnzxuglsd@mail.ru;brave, confident, communicative, funny, cool
+71;amazon;companyLogos\amazonLogoFile.png;game developer;105000;почасовой;23;89030821421;smzcnockvf@mail.ru;confident, communicative, funny, cool, stress-resistant
+72;google;companyLogos\googleLogoFile.png;full-stack developer;230000;2/2;30;89844318098;ajfrmxotho@mail.ru;brave, brave, attractive, smart, cool
+73;microsoft;companyLogos\microsoftLogoFile.png;mobile developer;150000;5/2;18;89190282570;wkbjzwucwl@mail.ru;communicative, anannoying, attractive, calm, anannoying
+74;yandex;companyLogos\yandexLogoFile.png;Data analyst;230000;посуточный;20;89288231167;jfrimpmyhc@mail.ru;stress-resistant, anannoying, attractive, communicative, confident
+75;Alpha bank;companyLogos\Alpha bankLogoFile.png;backend developer;150000;2/2;6;89719309307;hzriwkbarx@mail.ru;stress-resistant, calm, brave, calm, brave
+76;2Gis;companyLogos\2GisLogoFile.png;game developer;170000;2/2;0;89280962880;bgfcbceyhj@mail.ru;anannoying, brave, stress-resistant, communicative, attractive
+77;MTS;companyLogos\MTSLogoFile.png;ml engineer;170000;2/2;17;89419962180;ugixwtbvtr@mail.ru;confident, smart, stress-resistant, smart, attractive
+78;amazon;companyLogos\amazonLogoFile.png;mobile developer;100000;посуточный;21;89812590835;ehbbcpxifb@mail.ru;smart, cool, stress-resistant, attractive, stress-resistant
+79;Avito;companyLogos\AvitoLogoFile.png;game developer;130000;посуточный;29;89566445170;xvfbcgkcfq@mail.ru;brave, brave, cool, funny, stress-resistant
+80;google;companyLogos\googleLogoFile.png;game developer;230000;посуточный;15;89736639575;ckcotzgkub@mail.ru;confident, attractive, anannoying, stress-resistant, communicative
+81;microsoft;companyLogos\microsoftLogoFile.png;full-stack developer;230000;почасовой;30;89341214949;mjrmbsztss@mail.ru;anannoying, calm, attractive, funny, cool
+82;Sberbank;companyLogos\SberbankLogoFile.png;developer;200000;2/2;19;89535837417;hfroefwsjr@mail.ru;funny, brave, communicative, brave, anannoying
+83;Alpha bank;companyLogos\Alpha bankLogoFile.png;developer;400000;почасовой;20;89202378607;xjhguzyupz@mail.ru;attractive, smart, confident, calm, calm
+84;microsoft;companyLogos\microsoftLogoFile.png;game developer;100000;почасовой;24;89276650083;wweiqurpix@mail.ru;funny, confident, smart, funny, confident
+85;Sberbank;companyLogos\SberbankLogoFile.png;frontend developer;200000;посуточный;9;89349947748;iqflduuveo@mail.ru;funny, funny, brave, communicative, calm
+86;microsoft;companyLogos\microsoftLogoFile.png;developer;170000;почасовой;14;89255075036;owqcudhnef@mail.ru;smart, anannoying, communicative, stress-resistant, funny
+87;microsoft;companyLogos\microsoftLogoFile.png;backend developer;130000;2/2;25;89162168877;njhaimuczf@mail.ru;cool, communicative, funny, anannoying, brave
+88;2Gis;companyLogos\2GisLogoFile.png;full-stack developer;300000;почасовой;4;89167733462;skuiduburi@mail.ru;cool, anannoying, brave, anannoying, funny
+89;Alpha bank;companyLogos\Alpha bankLogoFile.png;ml engineer;130000;почасовой;27;89584887023;swtbrecuyk@mail.ru;calm, attractive, stress-resistant, anannoying, calm
+90;Sberbank;companyLogos\SberbankLogoFile.png;mobile developer;550000;почасовой;29;89201392766;abfcvkdzez@mail.ru;calm, smart, stress-resistant, brave, stress-resistant
+91;Tele2;companyLogos\Tele2LogoFile.png;mobile developer;105000;2/2;12;89805489207;toidukuhjz@mail.ru;cool, smart, anannoying, calm, funny
+92;Avito;companyLogos\AvitoLogoFile.png;full-stack developer;230000;посуточный;12;89896653273;efczzzbfkq@mail.ru;smart, smart, calm, confident, calm
+93;MTS;companyLogos\MTSLogoFile.png;frontend developer;550000;5/2;28;89848941405;dpqzikfobu@mail.ru;cool, calm, stress-resistant, funny, attractive
+94;Sberbank;companyLogos\SberbankLogoFile.png;frontend developer;230000;посуточный;20;89338260793;cdhthxdjgk@mail.ru;cool, attractive, confident, confident, brave
+95;Sberbank;companyLogos\SberbankLogoFile.png;developer;150000;2/2;20;89886800523;jelrlpaxam@mail.ru;stress-resistant, calm, smart, stress-resistant, cool
+96;amazon;companyLogos\amazonLogoFile.png;product analyst;200000;почасовой;19;89481029850;ceroswitdp@mail.ru;smart, confident, stress-resistant, attractive, cool
+97;google;companyLogos\googleLogoFile.png;mobile developer;200000;почасовой;11;89011572911;tpcclifkel@mail.ru;smart, smart, stress-resistant, communicative, communicative
+98;MTS;companyLogos\MTSLogoFile.png;frontend developer;300000;посуточный;3;89927683906;jytihrcqay@mail.ru;funny, stress-resistant, cool, anannoying, cool
+99;microsoft;companyLogos\microsoftLogoFile.png;developer;100000;2/2;16;89593567977;bnefxnxvgz@mail.ru;smart, anannoying, communicative, brave, brave
+100;Avito;companyLogos\AvitoLogoFile.png;frontend developer;550000;почасовой;16;89150552186;edyyhngycd@mail.ru;funny, smart, smart, communicative, smart
+101;yandex;companyLogos\yandexLogoFile.png;mobile developer;170000;5/2;2;89102008819;rudmphmeck@mail.ru;cool, cool, brave, calm, smart
+102;microsoft;companyLogos\microsoftLogoFile.png;product analyst;200000;5/2;21;89182156230;otrwospofg@mail.ru;smart, confident, funny, funny, calm
+103;yandex;companyLogos\yandexLogoFile.png;developer;230000;посуточный;3;89404852427;hfozqvlqfx@mail.ru;calm, calm, funny, anannoying, attractive
+104;Avito;companyLogos\AvitoLogoFile.png;game developer;550000;2/2;13;89249137001;wwkmfxdyyg@mail.ru;stress-resistant, attractive, cool, attractive, cool
+105;amazon;companyLogos\amazonLogoFile.png;game developer;100000;почасовой;7;89989381219;mdcaszsgov@mail.ru;confident, brave, anannoying, communicative, confident
+106;amazon;companyLogos\amazonLogoFile.png;frontend developer;230000;2/2;21;89878228417;sodkjghcwm@mail.ru;communicative, funny, stress-resistant, communicative, smart
+107;google;companyLogos\googleLogoFile.png;data scientist;230000;5/2;0;89813714336;bmxrmhuyfy@mail.ru;cool, attractive, attractive, confident, smart
+108;yandex;companyLogos\yandexLogoFile.png;data scientist;230000;посуточный;7;89415928845;qgajqkcklz@mail.ru;smart, stress-resistant, funny, anannoying, cool
+109;2Gis;companyLogos\2GisLogoFile.png;frontend developer;300000;5/2;14;89431472312;nayxqkqoyz@mail.ru;smart, calm, confident, stress-resistant, cool
+110;google;companyLogos\googleLogoFile.png;mobile developer;105000;посуточный;10;89847392273;wmyubzazcp@mail.ru;stress-resistant, funny, anannoying, cool, confident
+111;Alpha bank;companyLogos\Alpha bankLogoFile.png;frontend developer;300000;посуточный;20;89968465523;khktkydziv@mail.ru;smart, anannoying, anannoying, funny, attractive
+112;Tele2;companyLogos\Tele2LogoFile.png;product analyst;300000;посуточный;29;89930590175;cuypurfmbi@mail.ru;brave, confident, communicative, attractive, smart
+113;yandex;companyLogos\yandexLogoFile.png;game developer;200000;5/2;25;89199442191;sgekyrgzvx@mail.ru;anannoying, brave, stress-resistant, brave, cool
+114;Tele2;companyLogos\Tele2LogoFile.png;mobile developer;300000;5/2;3;89728378698;dhpoamvafy@mail.ru;funny, funny, attractive, communicative, calm
+115;MTS;companyLogos\MTSLogoFile.png;Data analyst;300000;5/2;15;89664066830;rarxsvkhtq@mail.ru;cool, brave, communicative, calm, cool
+116;Avito;companyLogos\AvitoLogoFile.png;mobile developer;200000;5/2;26;89644116242;dihersigbh@mail.ru;attractive, anannoying, attractive, confident, brave
+117;amazon;companyLogos\amazonLogoFile.png;data scientist;200000;5/2;8;89408295300;zjzujxmmys@mail.ru;communicative, cool, funny, stress-resistant, communicative
+118;Avito;companyLogos\AvitoLogoFile.png;developer;230000;5/2;0;89350192517;pnaraewkeg@mail.ru;communicative, stress-resistant, cool, stress-resistant, confident
+119;amazon;companyLogos\amazonLogoFile.png;developer;200000;почасовой;5;89736225512;jccvhhrjvb@mail.ru;attractive, funny, calm, funny, confident
+120;Avito;companyLogos\AvitoLogoFile.png;product analyst;100000;2/2;1;89573202771;jtsqdjootg@mail.ru;cool, stress-resistant, calm, smart, anannoying
+121;Alpha bank;companyLogos\Alpha bankLogoFile.png;frontend developer;170000;5/2;18;89272810791;pknfpfycgf@mail.ru;attractive, stress-resistant, brave, smart, calm
+122;MTS;companyLogos\MTSLogoFile.png;mobile developer;130000;посуточный;29;89871115698;ieowqrwwwp@mail.ru;calm, stress-resistant, calm, attractive, confident
+123;Sberbank;companyLogos\SberbankLogoFile.png;game developer;200000;2/2;14;89748227411;zsqmetogep@mail.ru;communicative, anannoying, confident, stress-resistant, communicative
+124;MTS;companyLogos\MTSLogoFile.png;frontend developer;200000;2/2;3;89706284936;spxnvjiupa@mail.ru;calm, communicative, cool, anannoying, anannoying
+125;Sberbank;companyLogos\SberbankLogoFile.png;product analyst;130000;почасовой;29;89632173089;lyynmkmnuv@mail.ru;stress-resistant, confident, stress-resistant, brave, confident
+126;Alpha bank;companyLogos\Alpha bankLogoFile.png;frontend developer;100000;почасовой;25;89021126931;klhsecdwra@mail.ru;cool, confident, brave, communicative, smart
+127;yandex;companyLogos\yandexLogoFile.png;product analyst;130000;2/2;29;89482051154;cgfmzkgipd@mail.ru;cool, anannoying, confident, stress-resistant, cool
+128;amazon;companyLogos\amazonLogoFile.png;Data analyst;400000;5/2;21;89279247256;fodkjmjqwi@mail.ru;confident, smart, anannoying, funny, confident
+129;Tele2;companyLogos\Tele2LogoFile.png;frontend developer;300000;посуточный;14;89315666828;qpuoqhimvf@mail.ru;attractive, anannoying, communicative, communicative, cool
+130;2Gis;companyLogos\2GisLogoFile.png;Data analyst;150000;5/2;14;89591905466;vuzwyvijgf@mail.ru;anannoying, smart, cool, funny, anannoying
+131;Alpha bank;companyLogos\Alpha bankLogoFile.png;backend developer;100000;2/2;19;89759702180;ullkjduhsj@mail.ru;funny, attractive, cool, confident, confident
+132;Alpha bank;companyLogos\Alpha bankLogoFile.png;game developer;105000;5/2;24;89563098994;afbtlkmfqr@mail.ru;stress-resistant, smart, calm, communicative, funny
+133;Alpha bank;companyLogos\Alpha bankLogoFile.png;developer;300000;почасовой;4;89710153764;myjfjnhhss@mail.ru;confident, smart, confident, anannoying, funny
+134;2Gis;companyLogos\2GisLogoFile.png;developer;230000;почасовой;16;89503584335;qctydteamd@mail.ru;communicative, brave, smart, funny, smart
+135;Avito;companyLogos\AvitoLogoFile.png;ml engineer;230000;2/2;27;89828454638;cjbprhtneg@mail.ru;calm, confident, anannoying, brave, calm
+136;yandex;companyLogos\yandexLogoFile.png;mobile developer;300000;2/2;12;89413891174;yiwxgcjwlg@mail.ru;communicative, calm, confident, smart, cool
+137;amazon;companyLogos\amazonLogoFile.png;Data analyst;300000;5/2;12;89472146495;rsmeaearwt@mail.ru;funny, stress-resistant, anannoying, communicative, smart
+138;microsoft;companyLogos\microsoftLogoFile.png;data scientist;105000;5/2;13;89194370168;vjsjbaoioj@mail.ru;stress-resistant, stress-resistant, brave, attractive, anannoying
+139;microsoft;companyLogos\microsoftLogoFile.png;mobile developer;100000;5/2;19;89170251519;lwhypnvrui@mail.ru;smart, attractive, brave, smart, communicative
+140;Avito;companyLogos\AvitoLogoFile.png;Data analyst;550000;5/2;7;89420442830;hoswkifygt@mail.ru;communicative, funny, smart, anannoying, communicative
+141;microsoft;companyLogos\microsoftLogoFile.png;developer;150000;5/2;14;89428488674;ydhacwyhsg@mail.ru;smart, cool, anannoying, smart, smart
+142;Avito;companyLogos\AvitoLogoFile.png;full-stack developer;130000;2/2;21;89539867244;ewzmtgonzl@mail.ru;confident, stress-resistant, anannoying, stress-resistant, anannoying
+143;amazon;companyLogos\amazonLogoFile.png;full-stack developer;170000;посуточный;18;89531203634;tjhgauhnih@mail.ru;funny, funny, communicative, stress-resistant, communicative
+144;Sberbank;companyLogos\SberbankLogoFile.png;backend developer;200000;2/2;10;89870209168;reqgjfwkjs@mail.ru;calm, anannoying, cool, funny, stress-resistant
+145;Avito;companyLogos\AvitoLogoFile.png;backend developer;130000;2/2;12;89883887956;mtpjhaefqz@mail.ru;calm, attractive, funny, attractive, brave
+146;amazon;companyLogos\amazonLogoFile.png;full-stack developer;400000;5/2;9;89177945295;aauldrchjc@mail.ru;calm, funny, confident, anannoying, confident
+147;MTS;companyLogos\MTSLogoFile.png;full-stack developer;300000;5/2;2;89351864425;cdyrfvvriv@mail.ru;anannoying, brave, communicative, confident, stress-resistant
+148;amazon;companyLogos\amazonLogoFile.png;backend developer;130000;почасовой;30;89130140569;uyeegfivdr@mail.ru;stress-resistant, communicative, funny, communicative, brave
+149;Tele2;companyLogos\Tele2LogoFile.png;frontend developer;150000;почасовой;10;89555389026;cygurqdred@mail.ru;communicative, stress-resistant, calm, anannoying, communicative
+150;google;companyLogos\googleLogoFile.png;product analyst;300000;посуточный;26;89541714271;akubnfgupr@mail.ru;calm, cool, smart, anannoying, brave
+151;MTS;companyLogos\MTSLogoFile.png;Data analyst;130000;посуточный;5;89313125318;oqylobcwqx@mail.ru;stress-resistant, stress-resistant, cool, cool, cool
+152;Sberbank;companyLogos\SberbankLogoFile.png;Data analyst;150000;2/2;23;89184400959;kzmausjgmh@mail.ru;confident, attractive, communicative, smart, attractive
+153;Alpha bank;companyLogos\Alpha bankLogoFile.png;backend developer;400000;почасовой;13;89272100074;cmhgdnmphn@mail.ru;calm, anannoying, stress-resistant, brave, brave
+154;yandex;companyLogos\yandexLogoFile.png;Data analyst;550000;посуточный;25;89922914410;qkamhurktr@mail.ru;communicative, communicative, confident, funny, smart
+155;google;companyLogos\googleLogoFile.png;full-stack developer;400000;почасовой;14;89311996436;ffaclvgrzk@mail.ru;attractive, calm, attractive, funny, calm
+156;google;companyLogos\googleLogoFile.png;ml engineer;150000;5/2;30;89808806488;kldacllteo@mail.ru;confident, stress-resistant, funny, brave, stress-resistant
+157;2Gis;companyLogos\2GisLogoFile.png;full-stack developer;170000;5/2;24;89853212157;jomonxrqyj@mail.ru;attractive, brave, confident, stress-resistant, calm
+158;2Gis;companyLogos\2GisLogoFile.png;Data analyst;100000;посуточный;23;89319563622;zginrnnzwa@mail.ru;smart, smart, attractive, funny, confident
+159;Sberbank;companyLogos\SberbankLogoFile.png;mobile developer;130000;2/2;26;89819925086;cxxaedrwud@mail.ru;attractive, smart, anannoying, communicative, confident
+160;Avito;companyLogos\AvitoLogoFile.png;game developer;130000;посуточный;5;89692236447;xzrfusewjt@mail.ru;funny, confident, smart, cool, cool
+161;Sberbank;companyLogos\SberbankLogoFile.png;frontend developer;400000;посуточный;18;89344709699;boxvynfhks@mail.ru;funny, brave, smart, calm, anannoying
+162;Avito;companyLogos\AvitoLogoFile.png;ml engineer;170000;5/2;27;89523432145;tcenaumndd@mail.ru;brave, confident, confident, stress-resistant, smart
+163;2Gis;companyLogos\2GisLogoFile.png;mobile developer;150000;2/2;6;89630800903;xfdmvzcaut@mail.ru;smart, confident, anannoying, stress-resistant, brave
+164;microsoft;companyLogos\microsoftLogoFile.png;full-stack developer;300000;посуточный;23;89328140388;dcckxaaydz@mail.ru;stress-resistant, funny, calm, stress-resistant, confident
+165;Sberbank;companyLogos\SberbankLogoFile.png;ml engineer;105000;5/2;7;89136624001;sxttobbgqn@mail.ru;confident, stress-resistant, calm, brave, communicative
+166;amazon;companyLogos\amazonLogoFile.png;backend developer;150000;посуточный;28;89783344457;gvvpjgojog@mail.ru;calm, attractive, calm, anannoying, smart
+167;Avito;companyLogos\AvitoLogoFile.png;full-stack developer;230000;5/2;0;89939433070;lmkxgbfcpy@mail.ru;funny, attractive, confident, cool, communicative
+168;MTS;companyLogos\MTSLogoFile.png;backend developer;100000;5/2;18;89354366655;pckqchbddz@mail.ru;funny, brave, brave, anannoying, stress-resistant
+169;2Gis;companyLogos\2GisLogoFile.png;product analyst;100000;2/2;19;89944647682;wrxbzmqrlx@mail.ru;confident, anannoying, calm, funny, stress-resistant
+170;microsoft;companyLogos\microsoftLogoFile.png;ml engineer;105000;почасовой;19;89644575505;vobtwhxgin@mail.ru;communicative, stress-resistant, anannoying, stress-resistant, communicative
+171;Sberbank;companyLogos\SberbankLogoFile.png;data scientist;100000;2/2;26;89550974592;fgfrcclmzn@mail.ru;attractive, stress-resistant, confident, stress-resistant, brave
+172;Tele2;companyLogos\Tele2LogoFile.png;frontend developer;170000;5/2;22;89566892628;mjugwwbsqf@mail.ru;stress-resistant, stress-resistant, funny, stress-resistant, attractive
+173;google;companyLogos\googleLogoFile.png;frontend developer;130000;2/2;18;89833296676;cihubsjoll@mail.ru;attractive, smart, cool, anannoying, stress-resistant
+174;amazon;companyLogos\amazonLogoFile.png;mobile developer;130000;почасовой;22;89839991712;msqsghmcph@mail.ru;calm, brave, funny, attractive, funny
+175;Tele2;companyLogos\Tele2LogoFile.png;ml engineer;150000;2/2;3;89564531179;elsotflbgs@mail.ru;cool, smart, communicative, stress-resistant, confident
+176;google;companyLogos\googleLogoFile.png;Data analyst;105000;посуточный;15;89964586011;fnpcuzsrup@mail.ru;anannoying, smart, anannoying, attractive, stress-resistant
+177;yandex;companyLogos\yandexLogoFile.png;game developer;550000;почасовой;2;89400958233;chynvzhcpq@mail.ru;brave, brave, smart, communicative, smart
+178;Sberbank;companyLogos\SberbankLogoFile.png;data scientist;230000;2/2;9;89328533321;ugriwniqxd@mail.ru;confident, attractive, communicative, funny, smart
+179;Alpha bank;companyLogos\Alpha bankLogoFile.png;mobile developer;550000;5/2;23;89925857331;fjpwpxfblk@mail.ru;stress-resistant, stress-resistant, attractive, anannoying, stress-resistant
+180;MTS;companyLogos\MTSLogoFile.png;game developer;100000;посуточный;14;89406354921;pnpeelfjmt@mail.ru;smart, brave, calm, attractive, anannoying
+181;Avito;companyLogos\AvitoLogoFile.png;mobile developer;130000;2/2;17;89476926872;kuqpzomwnl@mail.ru;confident, smart, brave, cool, communicative
+182;MTS;companyLogos\MTSLogoFile.png;full-stack developer;230000;2/2;13;89777679825;mbupmktlpt@mail.ru;confident, funny, anannoying, stress-resistant, attractive
+183;MTS;companyLogos\MTSLogoFile.png;developer;150000;2/2;17;89919317458;ndmpdsydsg@mail.ru;cool, anannoying, anannoying, stress-resistant, confident
+184;MTS;companyLogos\MTSLogoFile.png;frontend developer;130000;почасовой;30;89875048131;vfpenemwbo@mail.ru;cool, confident, stress-resistant, stress-resistant, anannoying
+185;google;companyLogos\googleLogoFile.png;data scientist;150000;2/2;7;89934760929;rifsuqhces@mail.ru;smart, attractive, calm, confident, confident
+186;Sberbank;companyLogos\SberbankLogoFile.png;product analyst;130000;2/2;24;89640273095;kmkhssmvno@mail.ru;attractive, smart, attractive, communicative, stress-resistant
+187;MTS;companyLogos\MTSLogoFile.png;product analyst;550000;5/2;13;89544602357;nwafxwhgbi@mail.ru;smart, communicative, attractive, calm, brave
+188;Sberbank;companyLogos\SberbankLogoFile.png;backend developer;200000;почасовой;21;89459382024;babvqopqfo@mail.ru;calm, stress-resistant, communicative, communicative, brave
+189;Tele2;companyLogos\Tele2LogoFile.png;backend developer;200000;почасовой;19;89757075084;viussqfqwe@mail.ru;confident, funny, communicative, attractive, calm
+190;MTS;companyLogos\MTSLogoFile.png;Data analyst;230000;посуточный;12;89486704981;htxdzujtln@mail.ru;smart, cool, smart, calm, stress-resistant
+191;yandex;companyLogos\yandexLogoFile.png;game developer;130000;5/2;12;89973100149;txmrjxxwtl@mail.ru;stress-resistant, confident, calm, communicative, funny
+192;Avito;companyLogos\AvitoLogoFile.png;product analyst;105000;2/2;8;89789499409;ggkytbioly@mail.ru;brave, funny, calm, cool, communicative
+193;microsoft;companyLogos\microsoftLogoFile.png;developer;105000;5/2;22;89656120308;dnilqadojs@mail.ru;anannoying, calm, stress-resistant, smart, stress-resistant
+194;Tele2;companyLogos\Tele2LogoFile.png;Data analyst;300000;посуточный;5;89351523494;kkvfxahhjm@mail.ru;stress-resistant, confident, confident, communicative, funny
+195;yandex;companyLogos\yandexLogoFile.png;backend developer;105000;5/2;12;89386749513;bocljarint@mail.ru;communicative, anannoying, funny, communicative, anannoying
+196;google;companyLogos\googleLogoFile.png;backend developer;550000;посуточный;4;89735594923;dwcldvdxro@mail.ru;calm, stress-resistant, communicative, calm, attractive
+197;amazon;companyLogos\amazonLogoFile.png;mobile developer;130000;5/2;23;89551091545;pbyjzwyyoj@mail.ru;brave, confident, brave, brave, stress-resistant
+198;2Gis;companyLogos\2GisLogoFile.png;Data analyst;100000;5/2;5;89192988302;uothwmlvrg@mail.ru;smart, smart, stress-resistant, brave, confident
+199;MTS;companyLogos\MTSLogoFile.png;full-stack developer;150000;почасовой;20;89175121201;lfzdzdbtub@mail.ru;stress-resistant, cool, stress-resistant, cool, funny
+200;Alpha bank;companyLogos\Alpha bankLogoFile.png;game developer;100000;2/2;30;89527859320;xuoffvncrs@mail.ru;communicative, confident, attractive, communicative, communicative
+201;MTS;companyLogos\MTSLogoFile.png;ml engineer;170000;посуточный;9;89165548344;wsaznmoijo@mail.ru;anannoying, confident, brave, calm, attractive
+202;Tele2;companyLogos\Tele2LogoFile.png;Data analyst;100000;посуточный;12;89438224479;ivvgobqpnc@mail.ru;funny, funny, anannoying, anannoying, smart
+203;MTS;companyLogos\MTSLogoFile.png;ml engineer;550000;посуточный;23;89376436254;kwvnhkebmt@mail.ru;attractive, funny, cool, brave, smart
+204;MTS;companyLogos\MTSLogoFile.png;product analyst;150000;2/2;14;89786254834;dhvygkjisu@mail.ru;smart, anannoying, stress-resistant, smart, cool
+205;google;companyLogos\googleLogoFile.png;ml engineer;170000;5/2;13;89509221525;xhatmuudqb@mail.ru;brave, funny, communicative, attractive, smart
+206;Alpha bank;companyLogos\Alpha bankLogoFile.png;frontend developer;130000;почасовой;24;89823212731;hmknhfxaxq@mail.ru;stress-resistant, stress-resistant, cool, confident, funny
+207;Alpha bank;companyLogos\Alpha bankLogoFile.png;game developer;100000;почасовой;17;89966345497;xkjlzzqtsj@mail.ru;attractive, smart, brave, communicative, funny
+208;google;companyLogos\googleLogoFile.png;data scientist;130000;почасовой;26;89088929928;faeedfuujk@mail.ru;confident, stress-resistant, confident, attractive, smart
+209;google;companyLogos\googleLogoFile.png;product analyst;550000;2/2;1;89354010501;olxjoqkdvf@mail.ru;anannoying, stress-resistant, calm, brave, anannoying
+210;Tele2;companyLogos\Tele2LogoFile.png;backend developer;400000;5/2;26;89057626136;epvlhvhrwt@mail.ru;calm, cool, stress-resistant, communicative, smart
+211;Alpha bank;companyLogos\Alpha bankLogoFile.png;game developer;100000;посуточный;21;89306967327;fdukxffjps@mail.ru;smart, confident, communicative, attractive, communicative
+212;amazon;companyLogos\amazonLogoFile.png;Data analyst;550000;почасовой;0;89062193476;swyxlijjhe@mail.ru;calm, brave, smart, stress-resistant, confident
+213;Tele2;companyLogos\Tele2LogoFile.png;ml engineer;105000;5/2;11;89807282059;vryxozbafp@mail.ru;attractive, stress-resistant, cool, calm, brave
+214;Sberbank;companyLogos\SberbankLogoFile.png;Data analyst;100000;почасовой;11;89858880533;fmowgrgonu@mail.ru;confident, cool, anannoying, brave, cool
+215;yandex;companyLogos\yandexLogoFile.png;Data analyst;130000;5/2;23;89968164929;atdqlahygg@mail.ru;smart, confident, confident, stress-resistant, smart
+216;amazon;companyLogos\amazonLogoFile.png;ml engineer;105000;посуточный;10;89197883936;yljddjhmlt@mail.ru;calm, confident, confident, funny, anannoying
+217;microsoft;companyLogos\microsoftLogoFile.png;frontend developer;300000;2/2;15;89175500005;edzlodsrke@mail.ru;stress-resistant, anannoying, calm, calm, communicative
+218;2Gis;companyLogos\2GisLogoFile.png;mobile developer;105000;почасовой;29;89104714338;utgtnkntar@mail.ru;confident, cool, attractive, funny, smart
+219;Sberbank;companyLogos\SberbankLogoFile.png;data scientist;150000;5/2;26;89996443510;jkpxinovgz@mail.ru;cool, cool, anannoying, anannoying, cool
+220;yandex;companyLogos\yandexLogoFile.png;game developer;170000;2/2;25;89310092923;dthunwooxv@mail.ru;cool, stress-resistant, calm, brave, calm
+221;2Gis;companyLogos\2GisLogoFile.png;data scientist;150000;почасовой;20;89264044237;jjmpsvknhk@mail.ru;stress-resistant, stress-resistant, smart, communicative, funny
+222;yandex;companyLogos\yandexLogoFile.png;developer;170000;посуточный;18;89367108188;wjopmmlebk@mail.ru;cool, stress-resistant, stress-resistant, calm, confident
+223;MTS;companyLogos\MTSLogoFile.png;ml engineer;150000;посуточный;13;89894295904;sucvzqlyqn@mail.ru;calm, communicative, attractive, funny, stress-resistant
+224;Sberbank;companyLogos\SberbankLogoFile.png;backend developer;105000;почасовой;27;89581781823;wcmbvbhrml@mail.ru;smart, stress-resistant, communicative, cool, attractive
+225;amazon;companyLogos\amazonLogoFile.png;developer;400000;почасовой;1;89388603022;owpjbwyvwt@mail.ru;smart, calm, calm, smart, attractive
+226;Alpha bank;companyLogos\Alpha bankLogoFile.png;data scientist;130000;5/2;7;89860363144;gtoqnmicxa@mail.ru;anannoying, smart, communicative, brave, calm
+227;Alpha bank;companyLogos\Alpha bankLogoFile.png;full-stack developer;170000;почасовой;16;89357628151;pzarknnxtu@mail.ru;communicative, attractive, funny, communicative, smart
+228;Avito;companyLogos\AvitoLogoFile.png;mobile developer;170000;посуточный;30;89426093923;ufarzrosdq@mail.ru;confident, confident, confident, stress-resistant, attractive
+229;microsoft;companyLogos\microsoftLogoFile.png;mobile developer;550000;почасовой;30;89073965627;wsmtcjghec@mail.ru;brave, anannoying, confident, stress-resistant, smart
+230;Sberbank;companyLogos\SberbankLogoFile.png;developer;550000;почасовой;6;89416983245;qudosrtjxy@mail.ru;confident, attractive, stress-resistant, anannoying, stress-resistant
+231;google;companyLogos\googleLogoFile.png;game developer;300000;5/2;7;89689319334;aaykqrxycr@mail.ru;calm, funny, funny, confident, communicative
+232;MTS;companyLogos\MTSLogoFile.png;frontend developer;100000;5/2;1;89380185155;xuwjxnpqjn@mail.ru;communicative, funny, anannoying, confident, attractive
+233;microsoft;companyLogos\microsoftLogoFile.png;mobile developer;200000;посуточный;30;89639327664;bkcpdmokal@mail.ru;cool, anannoying, stress-resistant, communicative, funny
+234;google;companyLogos\googleLogoFile.png;full-stack developer;150000;2/2;12;89568615102;xapemvbqlz@mail.ru;cool, cool, cool, cool, smart
+235;2Gis;companyLogos\2GisLogoFile.png;frontend developer;400000;2/2;17;89348495847;svxzkutapp@mail.ru;smart, stress-resistant, brave, attractive, smart
+236;Tele2;companyLogos\Tele2LogoFile.png;Data analyst;100000;5/2;27;89226663593;wgzpdpyzkz@mail.ru;attractive, attractive, anannoying, confident, cool
+237;Tele2;companyLogos\Tele2LogoFile.png;product analyst;100000;5/2;23;89877716580;cvbntcvfxs@mail.ru;brave, anannoying, cool, calm, funny
+238;Avito;companyLogos\AvitoLogoFile.png;data scientist;300000;почасовой;11;89816894429;xpjaoxtfhv@mail.ru;attractive, communicative, confident, stress-resistant, cool
+239;google;companyLogos\googleLogoFile.png;frontend developer;105000;почасовой;6;89234851658;xxytgokrcx@mail.ru;smart, calm, brave, brave, communicative
+240;microsoft;companyLogos\microsoftLogoFile.png;data scientist;170000;5/2;21;89716427461;aetauqgndm@mail.ru;brave, cool, funny, stress-resistant, brave
+241;amazon;companyLogos\amazonLogoFile.png;data scientist;550000;посуточный;15;89799686793;phwzyiayab@mail.ru;smart, calm, brave, smart, confident
+242;microsoft;companyLogos\microsoftLogoFile.png;ml engineer;400000;почасовой;27;89456977123;jrqgeppxyj@mail.ru;confident, anannoying, stress-resistant, funny, cool
+243;Sberbank;companyLogos\SberbankLogoFile.png;product analyst;150000;посуточный;28;89294538994;sttyzuvldv@mail.ru;cool, funny, confident, smart, brave
+244;Avito;companyLogos\AvitoLogoFile.png;mobile developer;550000;почасовой;30;89094649898;ybsuxkbmfz@mail.ru;anannoying, communicative, cool, brave, smart
+245;Sberbank;companyLogos\SberbankLogoFile.png;developer;230000;посуточный;24;89680191768;vrtnovidzn@mail.ru;calm, calm, communicative, stress-resistant, funny
+246;google;companyLogos\googleLogoFile.png;backend developer;150000;посуточный;22;89777709422;pghozvafms@mail.ru;stress-resistant, brave, stress-resistant, cool, attractive
+247;Sberbank;companyLogos\SberbankLogoFile.png;mobile developer;150000;2/2;10;89745129119;nsnqivmvub@mail.ru;calm, stress-resistant, anannoying, smart, funny
+248;yandex;companyLogos\yandexLogoFile.png;frontend developer;230000;посуточный;30;89873874765;cwtfsrqtmk@mail.ru;calm, confident, funny, brave, confident
+249;MTS;companyLogos\MTSLogoFile.png;product analyst;150000;посуточный;4;89534613395;nepbhoweja@mail.ru;cool, smart, smart, calm, cool
+250;yandex;companyLogos\yandexLogoFile.png;product analyst;100000;посуточный;13;89942638908;zhkwcmmtpi@mail.ru;confident, stress-resistant, cool, funny, communicative
+251;MTS;companyLogos\MTSLogoFile.png;product analyst;300000;почасовой;0;89051696231;xxxlzqysxt@mail.ru;smart, brave, calm, confident, anannoying
+252;Sberbank;companyLogos\SberbankLogoFile.png;ml engineer;550000;почасовой;21;89761747898;wwtaidyaxy@mail.ru;brave, stress-resistant, funny, anannoying, anannoying
+253;Alpha bank;companyLogos\Alpha bankLogoFile.png;developer;400000;почасовой;20;89113641983;qleprxibex@mail.ru;brave, brave, communicative, stress-resistant, anannoying
+254;Alpha bank;companyLogos\Alpha bankLogoFile.png;frontend developer;170000;посуточный;25;89791990741;xyfvsddygt@mail.ru;funny, smart, funny, communicative, confident
+255;Tele2;companyLogos\Tele2LogoFile.png;developer;400000;посуточный;3;89144524964;hcuyyfwpjs@mail.ru;attractive, cool, calm, cool, attractive
+256;Alpha bank;companyLogos\Alpha bankLogoFile.png;data scientist;400000;2/2;19;89940012162;fybglgzmbi@mail.ru;anannoying, funny, cool, anannoying, attractive
+257;Avito;companyLogos\AvitoLogoFile.png;mobile developer;170000;2/2;3;89175360628;ntattnhodt@mail.ru;smart, funny, brave, cool, anannoying
+258;amazon;companyLogos\amazonLogoFile.png;mobile developer;200000;5/2;25;89071593725;onpyzwotkg@mail.ru;cool, smart, smart, funny, funny
+259;Sberbank;companyLogos\SberbankLogoFile.png;product analyst;100000;2/2;20;89481734723;nguphpkxea@mail.ru;attractive, smart, communicative, confident, communicative
+260;yandex;companyLogos\yandexLogoFile.png;Data analyst;200000;почасовой;3;89349159999;towzabsdnv@mail.ru;attractive, brave, smart, smart, cool
+261;Avito;companyLogos\AvitoLogoFile.png;backend developer;170000;2/2;26;89832901500;qhkfcmofis@mail.ru;calm, smart, anannoying, funny, communicative
+262;Sberbank;companyLogos\SberbankLogoFile.png;ml engineer;100000;5/2;18;89476581530;frfqgvpmvo@mail.ru;cool, confident, smart, cool, brave
+263;yandex;companyLogos\yandexLogoFile.png;game developer;130000;почасовой;12;89450466967;rpjfzslzmp@mail.ru;smart, anannoying, anannoying, cool, brave
+264;yandex;companyLogos\yandexLogoFile.png;full-stack developer;550000;почасовой;19;89372669691;jjnehrykxj@mail.ru;smart, confident, funny, attractive, brave
+265;Avito;companyLogos\AvitoLogoFile.png;backend developer;200000;2/2;26;89700484863;zubuacclfk@mail.ru;cool, attractive, stress-resistant, calm, funny
+266;MTS;companyLogos\MTSLogoFile.png;frontend developer;230000;почасовой;6;89471157287;cyzobghtuo@mail.ru;communicative, smart, attractive, anannoying, cool
+267;google;companyLogos\googleLogoFile.png;product analyst;130000;посуточный;14;89691238094;xrajvprecw@mail.ru;smart, brave, funny, communicative, anannoying
+268;Avito;companyLogos\AvitoLogoFile.png;developer;550000;2/2;15;89283348391;gxxpswcgmm@mail.ru;communicative, attractive, calm, smart, cool
+269;2Gis;companyLogos\2GisLogoFile.png;developer;200000;посуточный;25;89987523715;vedewdmfnq@mail.ru;communicative, cool, smart, communicative, anannoying
+270;MTS;companyLogos\MTSLogoFile.png;frontend developer;230000;посуточный;29;89215118991;wcuqdscili@mail.ru;smart, communicative, anannoying, anannoying, smart
+271;Tele2;companyLogos\Tele2LogoFile.png;backend developer;105000;5/2;15;89727934958;qecihluilg@mail.ru;anannoying, funny, smart, confident, confident
+272;amazon;companyLogos\amazonLogoFile.png;mobile developer;100000;2/2;18;89043448002;mfcswtwkkx@mail.ru;confident, brave, calm, brave, funny
+273;Tele2;companyLogos\Tele2LogoFile.png;product analyst;200000;посуточный;30;89850325369;lcbhqkvcsw@mail.ru;smart, communicative, smart, brave, cool
+274;google;companyLogos\googleLogoFile.png;game developer;400000;почасовой;24;89370795379;jebkrjlpgf@mail.ru;stress-resistant, confident, stress-resistant, brave, smart
+275;yandex;companyLogos\yandexLogoFile.png;backend developer;230000;посуточный;29;89775232018;gratzbsguv@mail.ru;communicative, communicative, stress-resistant, funny, calm
+276;google;companyLogos\googleLogoFile.png;backend developer;230000;посуточный;11;89707466583;zifnhyxwjs@mail.ru;calm, attractive, confident, confident, smart
+277;Alpha bank;companyLogos\Alpha bankLogoFile.png;Data analyst;105000;5/2;0;89847300760;javwauxpan@mail.ru;smart, anannoying, smart, brave, attractive
+278;microsoft;companyLogos\microsoftLogoFile.png;developer;150000;посуточный;19;89300648387;namxjdvzuh@mail.ru;calm, stress-resistant, cool, confident, communicative
+279;amazon;companyLogos\amazonLogoFile.png;developer;230000;посуточный;29;89127002667;naczyhepwz@mail.ru;cool, brave, cool, brave, calm
+280;Avito;companyLogos\AvitoLogoFile.png;product analyst;550000;2/2;15;89020259145;olhuslrkvw@mail.ru;anannoying, cool, cool, smart, funny
+281;MTS;companyLogos\MTSLogoFile.png;game developer;300000;5/2;7;89938345820;pnvgzmiizw@mail.ru;smart, stress-resistant, calm, cool, communicative
+282;amazon;companyLogos\amazonLogoFile.png;data scientist;130000;почасовой;0;89828914477;udwdfzlktb@mail.ru;funny, confident, smart, anannoying, stress-resistant
+283;amazon;companyLogos\amazonLogoFile.png;product analyst;230000;посуточный;0;89209952138;qdxgyyiuds@mail.ru;communicative, cool, stress-resistant, brave, smart
+284;yandex;companyLogos\yandexLogoFile.png;developer;230000;2/2;7;89729118558;jvezkmesbj@mail.ru;brave, smart, brave, funny, brave
+285;amazon;companyLogos\amazonLogoFile.png;full-stack developer;150000;5/2;19;89894826037;lkyertahne@mail.ru;smart, cool, smart, smart, communicative
+286;MTS;companyLogos\MTSLogoFile.png;Data analyst;230000;5/2;19;89075135321;xhuqmjicbm@mail.ru;cool, confident, smart, stress-resistant, calm
+287;Avito;companyLogos\AvitoLogoFile.png;frontend developer;130000;посуточный;26;89265684375;usqdklasol@mail.ru;stress-resistant, funny, communicative, communicative, communicative
+288;Sberbank;companyLogos\SberbankLogoFile.png;full-stack developer;130000;5/2;30;89018116554;wjxptxxeum@mail.ru;calm, smart, calm, smart, funny
+289;2Gis;companyLogos\2GisLogoFile.png;Data analyst;400000;2/2;6;89652525676;zfwyucpabq@mail.ru;confident, calm, cool, confident, brave
+290;microsoft;companyLogos\microsoftLogoFile.png;product analyst;550000;посуточный;1;89350839704;seffunqpkf@mail.ru;stress-resistant, confident, attractive, smart, anannoying
+291;Avito;companyLogos\AvitoLogoFile.png;game developer;105000;5/2;2;89097311150;nnbecbbcjp@mail.ru;funny, calm, funny, brave, brave
+292;google;companyLogos\googleLogoFile.png;frontend developer;300000;посуточный;25;89554207235;dyjlibitll@mail.ru;funny, anannoying, communicative, calm, calm
+293;yandex;companyLogos\yandexLogoFile.png;backend developer;300000;почасовой;8;89763978180;plxelrdkex@mail.ru;smart, confident, cool, funny, attractive
+294;MTS;companyLogos\MTSLogoFile.png;data scientist;100000;посуточный;6;89429977288;dtquvpttey@mail.ru;calm, anannoying, confident, anannoying, calm
+295;google;companyLogos\googleLogoFile.png;backend developer;100000;2/2;5;89059328236;htlqlbbbvo@mail.ru;anannoying, stress-resistant, funny, brave, brave
+296;Avito;companyLogos\AvitoLogoFile.png;developer;230000;посуточный;29;89196317409;qozkynayyr@mail.ru;funny, stress-resistant, brave, calm, brave
+297;MTS;companyLogos\MTSLogoFile.png;ml engineer;105000;2/2;22;89238354837;baqmyjhzxn@mail.ru;cool, funny, communicative, stress-resistant, calm
+298;MTS;companyLogos\MTSLogoFile.png;ml engineer;170000;посуточный;5;89606878169;dsiyfsexwb@mail.ru;confident, funny, attractive, attractive, anannoying
+299;Avito;companyLogos\AvitoLogoFile.png;backend developer;300000;почасовой;17;89613855075;ioewqvqrtc@mail.ru;stress-resistant, calm, smart, attractive, communicative
+300;google;companyLogos\googleLogoFile.png;data scientist;105000;2/2;11;89608697804;dlpqmvjifv@mail.ru;stress-resistant, communicative, brave, confident, cool
+

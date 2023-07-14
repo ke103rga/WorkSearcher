@@ -67,7 +67,7 @@ namespace WorkSearch {
 		/// </summary>
 		~EmployerWindow()
 		{
-			vacancies.saveChanges(DB_FILE_PATH);
+			//vacancies.saveChanges(DB_FILE_PATH);
 			if (components)
 			{
 				delete components;
@@ -647,19 +647,25 @@ namespace WorkSearch {
 
 private: System::Void setting_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
 {
+	//After click the close button if user made any changes
+	//The dialog window will be shown that ask to confrim changes
+	if (vacancies.savedChanges) { return; }
 	System::Windows::Forms::DialogResult result;
 	result = MessageBox::Show("Сохранить все внесенные изменения?", "WorkSearcher", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
-	if (result == System::Windows::Forms::DialogResult::Yes && !vacancies.savedChanges)
+	if (result == System::Windows::Forms::DialogResult::Yes)
 	{
+		//If used said that he want to save changes it would be saved
 		vacancies.saveChanges(DB_FILE_PATH);
 	}
 }
 private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
+	//Check if input field is empty
 	if (vacIdTextBox->Text == "") {
 		String^ helpMessage = "Введите идентификатор вакансии";
 		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		return;
 	}
+	//Check if input field contains not int value
 	if (!InputDataValidator::isInt(vacIdTextBox->Text)) {
 		String^ helpMessage = "Идентификатор вакансии - целое положительное число";
 		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -667,11 +673,13 @@ private: System::Void deleteVacancyButton_Click(System::Object^ sender, System::
 		return;
 	}
 	int idToDelete = Convert::ToInt32(this->vacIdTextBox->Text);
+	//If databes contains vacancy with such id, it would be deleted
 	if (vacancies.deleteVacancy(idToDelete)) {
 		String^ successMessage = "Вакансия удалена";
 		MessageBox::MessageBox::Show(successMessage, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 		vacancies.savedChanges = false;
 	}
+	//User will be notificated about absence of that id
 	else {
 		String^ errorMessage = "Вакансия с таким идентификатором отсутствует в базе";
 		MessageBox::MessageBox::Show(errorMessage, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -685,6 +693,7 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 }
 
 	   bool anyEmptyFields() {
+		   //Function that checks are there any fields without entered text
 		   for (int i = 0; i != inputFields.Count; i++) {
 			   if (inputFields[i]->Text == "") {
 				   return true;
@@ -694,16 +703,22 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 	   }
 
        private: System::Void selectLogoButon_Click(System::Object^ sender, System::EventArgs^ e) {
-		   
+		   //Function that opens dialog for file selection and checks if selected file has valid extension
 		   OpenFileDialog^ ofd = gcnew OpenFileDialog();
 		   ofd->Filter = "Image Files|*.png;";
 		   ofd->ShowDialog();
 		   logoFile = gcnew String(ofd->FileName->ToCharArray());
+		   if (logoFile->Substring(logoFile->Length - 4) != ".png") {
+			   String^ errorMessage = "необходимо указать файл с расширением \".png\"";
+			   MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			   return;
+		   }
 		   choosedFile = true;
 		   if (chooseActionTheckBox->Checked) { fileChanged = true; }
        }
 
 	   private: bool createVacancy(Vacancy* newVacancy) {
+		   //Converting all texts from input fielda into std::string
 		   string company = msclr::interop::marshal_as<std::string>(companyTextBox->Text);
 		   string vacancy = msclr::interop::marshal_as<std::string>(vacancyTextBox->Text);
 		   string salary = msclr::interop::marshal_as<std::string>(salaryTextBox->Text);
@@ -714,6 +729,7 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 		   string candidateReq = msclr::interop::marshal_as<std::string>(reqTextBox->Text);
 		   string logo = "companyLogos\\" + msclr::interop::marshal_as<std::string>(newVacancy->id.ToString()) + "LogoFile.png";
 
+		   //Checking if any fields were filled incorrectly
 		   InputDataValidator validator = InputDataValidator();
 		   string errorMessage = "";
 		   bool isDataValid = validator.isInputDataValid(company, vacancy, salary, scedule, trialPer,
@@ -723,13 +739,14 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 			   MessageBox::MessageBox::Show(gcnew String(errorMessage.c_str()), L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			   return false;
 		   }
+		   //Copy the searched logo file if it was changed
 		   if (!chooseActionTheckBox->Checked || fileChanged) {
 			   std::ifstream src(msclr::interop::marshal_as<std::string>(logoFile->ToString()), std::ios::binary);
 			   std::ofstream dest(logo, std::ios::binary);
 			   dest << src.rdbuf();
 		   }
 		   
-		    
+		   //Changing the fields of vacancy that were passed as an argument
 		   newVacancy->company = company;
 		   newVacancy->vacancyName = vacancy;
 		   newVacancy->salary = Convert::ToInt32(salaryTextBox->Text);
@@ -743,17 +760,19 @@ private: System::Void helpLinkLabel_LinkClicked(System::Object^ sender, System::
 	   }
 
 private: System::Void addVacancyButton_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+	//Checking are all input fields were filled
 	if (anyEmptyFields()) {
 		String^ errorMessage = "Заполните все поля!";
 		MessageBox::MessageBox::Show(errorMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error); 
 		return; 
 	}
+	//If user selected to correct the existing vacancy
+	//display the attributes of such vacancy
 	if (chooseActionTheckBox->Checked) {
 		int idToCorrect = Convert::ToInt32(this->correctVacIdTextBox->Text);
 		Vacancy* newVacancy = vacancies.findById(idToCorrect);
 		if(createVacancy(newVacancy)) {
-			vacancies.updateVacacncy(idToCorrect, *newVacancy);
+			vacancies.updateVacancy(idToCorrect, *newVacancy);
 			String^ Message = "Вакансия была успешно обновлена.";
 			MessageBox::MessageBox::Show(Message, L"Успешно!", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			for (int i = 0; i != inputFields.Count; i++) {
@@ -762,6 +781,8 @@ private: System::Void addVacancyButton_Click(System::Object^ sender, System::Eve
 			vacancies.savedChanges = false;
 		}
 	}
+	//If user selected to create a new vacancy 
+	//creating the new instance and filling it
 	else {
 		Vacancy* newVacancy = &Vacancy(vacancies.getNextId());
 		if (createVacancy(newVacancy)) {
@@ -782,12 +803,16 @@ private: System::Void CorrectExistvacButton_Click(System::Object^ sender, System
 	return;
 }
 private: System::Void chooseActionTheckBox_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+	//if user selected to corret existing vacancy
+	//control elements for that operation become visible
 	if (chooseActionTheckBox->Checked == true) {
 		label11->Visible = true;
 		correctVacIdTextBox->Visible = true;
 		startCorrectButton->Visible = true;
 		addVacancyButton->Text = "Редактировать вакансию";
 	}
+	//if user selected to adnew vacancy
+	//control elements for correcting become not visible
 	else {
 		label11->Visible = false;
 		correctVacIdTextBox->Visible = false;
@@ -795,6 +820,7 @@ private: System::Void chooseActionTheckBox_CheckedChanged(System::Object^ sender
 		addVacancyButton->Text = "Добавить вакансию";
 		correctVacIdTextBox->Text = "";
 	}
+	//All information about last processed vacancy cleared
 	for (int i = 0; i != inputFields.Count; i++) {
 		inputFields[i]->Text = "";
 	}
@@ -804,6 +830,7 @@ private: System::Void correctVacIdTextBox_TextChanged(System::Object^ sender, Sy
 }
 private: System::Void startCorrectButton_Click(System::Object^ sender, System::EventArgs^ e) {
 	bool clear = false;
+	//Ckcking if id was writed correctly
 	if (correctVacIdTextBox->Text == "") {
 		String^ helpMessage = "Введите идентификатор вакансии";
 		MessageBox::MessageBox::Show(helpMessage, L"Ошибка ввода", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -822,12 +849,14 @@ private: System::Void startCorrectButton_Click(System::Object^ sender, System::E
 		vacIdTextBox->Text = "";
 		clear = true;
 	}
+	//In case of incorrect id the inputfield will be cleared
 	if (clear) {
 		for (int i = 0; i != inputFields.Count; i++) {
 			inputFields[i]->Text = "";
 		}
 		return;
 	}
+	//Otherwise all input fields will be filled by information of vacancy with such id
 	Vacancy* vacToCorrect = vacancies.findById(idToCorrect);
 	companyTextBox->Text = gcnew String(vacToCorrect->company.c_str());
 	vacancyTextBox->Text = gcnew String(vacToCorrect->vacancyName.c_str());

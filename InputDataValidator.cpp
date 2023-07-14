@@ -8,14 +8,23 @@ using namespace std;
 InputDataValidator::InputDataValidator() {};
 
 bool InputDataValidator::isInt(const std::string s){
-	return(strspn(s.c_str(), "0123456789") == s.size());
+	//Check if the string contains only digits 
+	//and it's length smaller than 10
+	if (strspn(s.c_str(), "0123456789") == s.size()) {
+		return s.size() < 10;
+	}
+	return false;
 }
 
 bool InputDataValidator::isInt(System::String^ s) {
-	return(strspn(msclr::interop::marshal_as<std::string>(s).c_str(), "0123456789") == s->Length);
+	if (strspn(msclr::interop::marshal_as<std::string>(s).c_str(), "0123456789") == s->Length) {
+		return s->Length < 10;
+	}
+	return false;
 }
 
 bool InputDataValidator::isEmailValid(const std::string& email){
+	//Check if the email adress follows the pattern
 	const std::regex pattern
 	("(\\w+)(\\.|_)?(\\w*)@(\\w+)(\\.(\\w+))+");
 	return std::regex_match(email, pattern);
@@ -24,20 +33,32 @@ bool InputDataValidator::isEmailValid(const std::string& email){
 bool InputDataValidator::isSceduleValid(const std::string& scedule){
 	std::locale loc;
 	//return appropriateScedules.find(std::tolower(scedule, loc)) != appropriateScedules.end();
+	// Check if scedule matches with one of the appropriate scedules 
 	return appropriateScedules.find(scedule) != appropriateScedules.end();
 }
 
 bool InputDataValidator::isPhoneValid(const std::string& phoneNumber){
+	// Check if the phone number follows the pattern
 	return phoneNumber.size() == 11 && phoneNumber[0] == '8' && phoneNumber[1] == '9';
 }
 
 bool InputDataValidator::isReqListValid(const std::string& reqs) {
+	//Check if split function will works fine
+	try {
+		split(reqs, ", ");
+	}
+	catch (const char* error_message) {
+		return false;
+	}
 	return true;
 }
 
 bool InputDataValidator::isInputDataValid(string company, string vacancy, string salary,
 	string scedule, string trialPer, string email, string phoneNumber, string candidateReq,
 	string& errorMessage, System::Collections::Generic::List<System::Windows::Forms::RichTextBox^>% inputFields) {
+	//Check all input fields and in case of incorrect input function will builds 
+	//the error message and insert the instructions into input fields which contains mistakes
+
 	bool res = true;
 	int errorCounter = 1;
 
@@ -49,7 +70,7 @@ bool InputDataValidator::isInputDataValid(string company, string vacancy, string
 
 	if (!isInt(trialPer)) {
 		errorMessage += "* Длительность испытательного срока должна составлять целое число дней или 0, в случае его отсутствия\n\n";
-		inputFields[3]->Text = "Сотрите этот текст и введите целое число или ноль в случае отсутствия срока";
+		inputFields[4]->Text = "Сотрите этот текст и введите целое число или ноль в случае отсутствия срока";
 		res = false;
 	}
 
@@ -59,7 +80,7 @@ bool InputDataValidator::isInputDataValid(string company, string vacancy, string
 			newMessage = newMessage + "*\t" + elem +  "\n";
 		}
 		errorMessage = errorMessage + newMessage + "\n\n";
-		inputFields[4]->Text = "Сотрите этот текст и введите целое число или ноль в случае отсутствия срока";
+		inputFields[3]->Text = "Сотрите этот текст и укажите один из графиков работы";
 		res = false;
 	}
 
@@ -85,6 +106,8 @@ bool InputDataValidator::isInputDataValid(string company, string vacancy, string
 }
 
 string InputDataValidator::join(vector<string>& strings, string delim) {
+	//Function that concatenates all strings from vector of strings into one string 
+
 	if (strings.size() == 0) {
 		return "empty vector";
 	}
@@ -100,6 +123,9 @@ string InputDataValidator::join(vector<string>& strings, string delim) {
 }
 
 vector<string> InputDataValidator::split(string str, string token) {
+	//Function that separates original string by the separator 
+	//and creates a vector of part of original strings 
+
 	vector<string>result;
 	while (str.size()) {
 		int index = str.find(token);
